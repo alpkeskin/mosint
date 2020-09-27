@@ -22,7 +22,7 @@ Also "credit" data is get from the verification service.
 `python3 mosint.py`
 
 ## Screen:
-![](https://i.imgur.com/lqudTPc.png)
+![](https://i.imgur.com/Fv4NRu2.png)
 
 ### My Bitcoin Wallet:
 `3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`

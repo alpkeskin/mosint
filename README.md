@@ -15,6 +15,8 @@ Also "credit" data is get from the verification service.
 `git clone https://github.com/alpkeskin/mosint.git`
 
 ## Running:
+:bangbang: Don't forget to download the necessary modules!
+
 `cd mosint`
 
 `python3 mosint.py`

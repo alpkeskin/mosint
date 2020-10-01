@@ -25,7 +25,7 @@ ___  ________ _____ _____ _   _ _____
 | |  | \ \_/ /\__/ /_| |_| |\  | | |  
 \_|  |_/\___/\____/ \___/\_| \_/ \_/ 
 ###
-v1.0
+v1.1
 github.com/alpkeskin
 ###
                                       
@@ -84,6 +84,7 @@ if (setapi == "q"):
 verifyurl = "https://app.verify-email.org/api/v1/"+setapi+"/verify/"
 pwnedurl = "https://dehashed.com/search?query="
 creditsurl = "https://app.verify-email.org/api/v1/"+setapi+"/credits"
+leakedpassurl = ("https://scylla.sh/search?q=email:")
 response = requests.get(creditsurl)
 html = response.content
 soup=BeautifulSoup(html,"html.parser")
@@ -112,7 +113,21 @@ while True:
         print(f"{bcolors.BOLD}{result.platform}:{bcolors.ENDC}{bcolors.WARNING} {result.message} (Success: {result.success}, Available: {result.available}){bcolors.ENDC}")
     print("")    
     print("------------------------")  
-    print("")  
+    print("")
+    headers = { 
+    "Accept": "application/json" 
+    }
+    u = (leakedpassurl+mail)
+    response3 = requests.get(u,headers=headers)
+    html3 = response3.content
+    lp = json.loads(html3)
+    for s in range(len(lp)):
+        print(f"{bcolors.WARNING}!{bcolors.ENDC}"+"Domain : "+lp[s]["fields"]["domain"])
+        print(f"{bcolors.WARNING}!{bcolors.ENDC}"+"Target email : "+lp[s]["fields"]["email"])
+        print(f"{bcolors.FAIL}!!!{bcolors.ENDC}"+"Leaked password : "+lp[s]["fields"]["password"])
+    print("")    
+    print("------------------------")  
+    print("")
     response2 = requests.get(pwnedurl+str(mail))
     html2 = response2.content
     soup2=BeautifulSoup(html2,"html.parser")

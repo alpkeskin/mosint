@@ -6,6 +6,9 @@ MOSINT is a OSINT Tool for mails.
 You can check if email address exists and account that has been compromised in a data breach.
 Also MOSINT offers accurate and fast checks for email address usage on online platforms with socialscan.
 
+**v1.1**:
+  - MOSINT can now display leaked password with using scylla.sh.
+
 ## API Key:
 https://verify-email.org/ --> API Integration
 You must create an API key for the verification feature.

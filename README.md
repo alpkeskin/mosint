@@ -17,15 +17,21 @@ Also "credit" data is get from the verification service.
 ## Cloning:
 `git clone https://github.com/alpkeskin/mosint.git`
 
-## Running:
+## Usage:
 :bangbang: Don't forget to download the necessary modules!
 
 `cd mosint`
 
 `python3 mosint.py`
 
+- Set your API Key
+
+- Set Target Email
+
+Also, you can **exit** by pressing the `q` key.
+
 ## Screen:
-![](https://i.imgur.com/oFm2O1N.png)
+![](https://i.imgur.com/Fe9XI3z.png)
 
 ### My Bitcoin Wallet:
 `3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`

@@ -11,10 +11,6 @@ It helps you gather information about the target email.
   - Scan Pastebin and Throwbin
   - Check if you have an account that has been compromised in a data breach
 
-**v1.1**:
-  - MOSINT can now display leaked password with using scylla.sh
-  - MOSINT can now scan the email on Pastebin.com and Throwbin.io
-
 ## :key: API Key:
 https://verify-email.org/ --> API Integration
 You must create an API key for the verification feature.

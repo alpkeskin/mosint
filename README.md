@@ -7,7 +7,8 @@ You can check if email address exists and account that has been compromised in a
 Also MOSINT offers accurate and fast checks for email address usage on online platforms with socialscan.
 
 **v1.1**:
-  - MOSINT can now display leaked password with using scylla.sh.
+  - MOSINT can now display leaked password with using scylla.sh
+  - MOSINT can now scan the email on Pastebin.com and Throwbin.io
 
 ## :key: API Key:
 https://verify-email.org/ --> API Integration

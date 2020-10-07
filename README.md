@@ -24,6 +24,7 @@ Also "credit" data is get from the verification service.
 pip3 install beautifulsoup4
 pip3 install socialscan
 pip3 install requests
+pip3 install google
 ```
 
 `cd mosint`

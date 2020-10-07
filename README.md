@@ -37,7 +37,7 @@ pip3 install requests
 Also, you can **exit** by pressing the `q` key.
 
 ## :computer: Screen:
-![](https://i.imgur.com/Fe9XI3z.png)
+[![asciicast](https://asciinema.org/a/U0OJD8BPvDDkSkmqkcHmTS2AR.svg)](https://asciinema.org/a/U0OJD8BPvDDkSkmqkcHmTS2AR)
 
 ### :money_with_wings: My Bitcoin Wallet:
 `3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`

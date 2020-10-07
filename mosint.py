@@ -1,11 +1,11 @@
 #https://github.com/alpkeskin
 
-import re
 import requests
 from bs4 import BeautifulSoup
 import json
 import os
 from socialscan.util import Platforms, sync_execute_queries
+from googlesearch import search
 
 class bcolors:
     HEADER = '\033[95m'
@@ -128,6 +128,17 @@ while True:
     print("")    
     print("------------------------")  
     print("")
+    print(f"{bcolors.BOLD} -- Scaning Pastebin and Throwbin...{bcolors.ENDC}")
+    print("")
+    query1 = "site:pastebin.com intext:"+'"'+mail+'"'
+    for j in search(query1, tld="com", num=10, stop=10, pause=2): 
+        print(j)
+    query2 = "site:throwbin.io intext:"+'"'+mail+'"'
+    for j in search(query2, tld="com", num=10, stop=10, pause=2): 
+        print(j)
+    print("")    
+    print("------------------------")  
+    print("")
     response2 = requests.get(pwnedurl+str(mail))
     html2 = response2.content
     soup2=BeautifulSoup(html2,"html.parser")
@@ -153,4 +164,3 @@ while True:
         print(f"{bcolors.HEADER}[#]{bcolors.ENDC}" + " Pwned on "+str(c)+" breached sites!")
         remo()
         continue
-        

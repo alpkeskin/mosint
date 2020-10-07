@@ -2,9 +2,14 @@
 created by Alp Keskin
 
 ## :question: What is the MOSINT ?
-MOSINT is a OSINT Tool for mails. 
-You can check if email address exists and account that has been compromised in a data breach.
-Also MOSINT offers accurate and fast checks for email address usage on online platforms with socialscan.
+MOSINT is a OSINT Tool for emails.
+It helps you gather information about the target email.
+#### :briefcase: Features:
+  - [need API] Verification Service { Check if email exist }
+  - Check social accounts with Socialscan
+  - Check data breach with scylla.sh
+  - Scan Pastebin and Throwbin
+  - Check if you have an account that has been compromised in a data breach
 
 **v1.1**:
   - MOSINT can now display leaked password with using scylla.sh

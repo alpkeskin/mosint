@@ -8,7 +8,7 @@ It helps you gather information about the target email.
   - [need API] Verification Service { Check if email exist }
   - Check social accounts with Socialscan
   - Check data breach with scylla.sh
-  - Scan Pastebin and Throwbin
+  - Scan Pastebin Dumps
   - Check if you have an account that has been compromised in a data breach
 
 ## :key: API Key:
@@ -25,7 +25,8 @@ Also "credit" data is get from the verification service.
 pip3 install beautifulsoup4
 pip3 install socialscan
 pip3 install requests
-pip3 install google
+pip3 install prettytable
+pip3 install json
 ```
 
 `cd mosint`
@@ -39,7 +40,7 @@ pip3 install google
 Also, you can **exit** by pressing the `q` key.
 
 ## :computer: Screen:
-[![asciicast](https://asciinema.org/a/U0OJD8BPvDDkSkmqkcHmTS2AR.svg)](https://asciinema.org/a/U0OJD8BPvDDkSkmqkcHmTS2AR)
+[![asciicast](https://asciinema.org/a/w9XiY4aJ2LuYfU7pd0Hlg4OzF.svg)](https://asciinema.org/a/w9XiY4aJ2LuYfU7pd0Hlg4OzF)
 
 ### :money_with_wings: My Bitcoin Wallet:
 `3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`

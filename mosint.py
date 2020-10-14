@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import json
 import os
 from socialscan.util import Platforms, sync_execute_queries
-from googlesearch import search
+from prettytable import PrettyTable
 
 class bcolors:
     HEADER = '\033[95m'
@@ -25,7 +25,7 @@ ___  ________ _____ _____ _   _ _____
 | |  | \ \_/ /\__/ /_| |_| |\  | | |  
 \_|  |_/\___/\____/ \___/\_| \_/ \_/ 
 ###
-v1.1
+v1.2
 github.com/alpkeskin
 ###
                                       
@@ -59,7 +59,7 @@ def verifyconnect(url='https://verify-email.org/' , timeout=5):
 
 verifyconnect()
 
-def pwnconnect(url='https://dehashed.com/search?query=example%40gmail.com' , timeout=20):
+def pwnconnect(url='https://scylla.sh/' , timeout=20):
     try:
         req = requests.get(url, timeout=timeout)
         req.raise_for_status()
@@ -84,7 +84,8 @@ if (setapi == "q"):
 verifyurl = "https://app.verify-email.org/api/v1/"+setapi+"/verify/"
 pwnedurl = "https://dehashed.com/search?query="
 creditsurl = "https://app.verify-email.org/api/v1/"+setapi+"/credits"
-leakedpassurl = ("https://scylla.sh/search?q=email:")
+leakedpassurl = "https://scylla.sh/search?q=email:"
+psbdmpurl = "https://psbdmp.ws/api/search/"
 response = requests.get(creditsurl)
 html = response.content
 soup=BeautifulSoup(html,"html.parser")
@@ -121,21 +122,21 @@ while True:
     response3 = requests.get(u,headers=headers)
     html3 = response3.content
     lp = json.loads(html3)
+    table = PrettyTable(["Domain","Email",f"{bcolors.FAIL}Password{bcolors.ENDC}"])
     for s in range(len(lp)):
-        print(f"{bcolors.WARNING}!{bcolors.ENDC}"+"Domain : "+lp[s]["fields"]["domain"])
-        print(f"{bcolors.WARNING}!{bcolors.ENDC}"+"Target email : "+lp[s]["fields"]["email"])
-        print(f"{bcolors.FAIL}!!!{bcolors.ENDC}"+"Leaked password : "+lp[s]["fields"]["password"])
+        table.add_row([lp[s]["fields"]["domain"],lp[s]["fields"]["email"],lp[s]["fields"]["password"]])
+    print(table)    
     print("")    
     print("------------------------")  
     print("")
-    print(f"{bcolors.BOLD} -- Scaning Pastebin and Throwbin...{bcolors.ENDC}")
+    print(f"{bcolors.BOLD} -- Scanning Pastebin Dumps...{bcolors.ENDC}")
     print("")
-    query1 = "site:pastebin.com intext:"+'"'+mail+'"'
-    for j in search(query1, tld="com", num=10, stop=10, pause=2): 
-        print(j)
-    query2 = "site:throwbin.io intext:"+'"'+mail+'"'
-    for j in search(query2, tld="com", num=10, stop=10, pause=2): 
-        print(j)
+    u = (psbdmpurl+mail)
+    response4 = requests.get(u,headers=headers)
+    html4 = response4.content
+    lp2 = json.loads(html4)
+    for i in lp2['data']:
+        print("https://pastebin.com/"+i['id'])
     print("")    
     print("------------------------")  
     print("")

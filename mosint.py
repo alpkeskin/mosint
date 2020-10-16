@@ -152,7 +152,7 @@ while True:
     for line in logfile:
         if find in line.split():
             c += 1
-
+#dehashed
     if c == 1:
         print(f"{bcolors.HEADER}[#]{bcolors.ENDC}" + " Pwned on "+str(c)+" breached site!")
         remo()

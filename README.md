@@ -33,6 +33,8 @@ Save your API key in the `config.json`
 
 `pip3 install -r requirements.txt`
 
+- You can edit the `Config.json` File
+
 `python3 mosint.py`
 
 - Set Target Email

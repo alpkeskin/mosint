@@ -24,9 +24,9 @@ Save your API key in the `api.txt`
 `git clone https://github.com/alpkeskin/mosint.git`
 
 ## :shipit: Usage:
-`pip3 install -r requirements.txt`
-
 `cd mosint`
+
+`pip3 install -r requirements.txt`
 
 `python3 mosint.py`
 

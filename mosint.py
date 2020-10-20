@@ -41,7 +41,6 @@ def connection(url='https://www.google.com/' , timeout=5):
         print(f"{bcolors.FAIL}[-] No internet connection available.{bcolors.ENDC}")
     return False
 
-connection()
 
 def verifyconnect(url='https://verify-email.org/' , timeout=5):
     try:
@@ -55,7 +54,6 @@ def verifyconnect(url='https://verify-email.org/' , timeout=5):
         print(f"{bcolors.FAIL}[-] No verification service available.{bcolors.ENDC}")
     return False
 
-verifyconnect()
 
 def pwnconnect(url='https://scylla.sh/' , timeout=20):
     try:
@@ -69,23 +67,29 @@ def pwnconnect(url='https://scylla.sh/' , timeout=20):
         print(f"{bcolors.FAIL}[-] No leaked database available.{bcolors.ENDC}")
     return False
 
-pwnconnect()
+configfile = open('config.json', "r")
+conf = json.loads(configfile.read())
+for i in conf:
+    checkconnect = (i['Check Connections'])
+    setapi = (i['API Key'])
+    socialscan = (i['Social Scan'])
+    leakeddb = (i['Leaked DB'])
+    pastebindumps = (i['Pastebin Dumps'])
+    googlesearch = (i['Google Search'])
+    dns = (i['DNS Lookup'])
+if (checkconnect == "True" or checkconnect == "T" or checkconnect == "true"):
+    connection()
+    verifyconnect()
+    pwnconnect()
 
-def remo():
-    if os.path.exists("html.txt"):
-        os.remove("html.txt")
-print()
-api = open("api.txt", "r")
-setapi = api.read()
 verifyurl = "https://app.verify-email.org/api/v1/"+setapi+"/verify/"
 creditsurl = "https://app.verify-email.org/api/v1/"+setapi+"/credits"
 leakedpassurl = "https://scylla.sh/search?q=email:"
 psbdmpurl = "https://psbdmp.ws/api/search/"
-pwnedurl = "https://dehashed.com/search?query="
 searchurlP="https://s.sudonull.com/?q=site%3Apastebin.com+intext%3A%22"
 searchurlT="https://s.sudonull.com/?q=site%3Athrowbin.io+intext%3A%22"
 if (setapi != ""):
-    print('API Key : '+'\x1b[6;30;42m' + 'OK!' + '\x1b[0m')
+    print('API Key : '+'\x1b[6;30;42m' + ' OK! ' + '\x1b[0m')
     response = requests.get(creditsurl)
     html = response.content
     soup=BeautifulSoup(html,"html.parser")
@@ -108,93 +112,94 @@ while True:
     	print("")
     	print("------------------------")
     	print("")
-
-    queries = [mail]
-    platforms = [Platforms.GITHUB, Platforms.TWITTER, Platforms.INSTAGRAM, Platforms.PINTEREST, Platforms.SPOTIFY]
-    results = sync_execute_queries(queries, platforms)
-    for result in results:
-        print(f"{bcolors.BOLD}{result.platform}:{bcolors.ENDC}{bcolors.WARNING} {result.message} (Success: {result.success}, Available: {result.available}){bcolors.ENDC}")
-    print("")    
-    print("------------------------")  
-    print("")
-    headers = { 
-    "Accept": "application/json" 
-    }
-    u = (leakedpassurl+mail)
-    response = requests.get(u,headers=headers)
-    html = response.content
-    lp = json.loads(html)
-    table = PrettyTable(["Domain","Email",f"{bcolors.FAIL}Password{bcolors.ENDC}"])
-    for s in range(len(lp)):
-        table.add_row([lp[s]["fields"]["domain"],lp[s]["fields"]["email"],lp[s]["fields"]["password"]])
-    print(table)    
-    print("")    
-    print("------------------------")  
-    print("")
-    print(f"{bcolors.WARNING} -- Scanning Pastebin Dumps...{bcolors.ENDC}")
-    print("")
-    u = (psbdmpurl+mail)
-    response4 = requests.get(u,headers=headers)
-    html4 = response4.content
-    lp2 = json.loads(html4)
-    for i in lp2['data']:
-        print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+"https://pastebin.com/"+i['id'])
-    print("")    
-    print("------------------------")  
-    print("")
-    print(f"{bcolors.WARNING} -- Google Searching... [Pastebin & Throwbin]{bcolors.ENDC}")
-    print("")    
-    x = mail.replace("@", "%40")
-    u = (searchurlP+x+"%22")
-    response = requests.get(u)
-    html = response.content
-    soup=BeautifulSoup(html,"html.parser")
-    rgx = str(soup)
-    urls = re.findall('http[s]?://pastebin.com(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+<', rgx)
     try:
-        for x in range(len(urls)): 
-            p = urls[x].replace("<", "")
-            print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+p)
-
+        if (socialscan == "True" or socialscan == "T" or socialscan == "true"):
+            queries = [mail]
+            platforms = [Platforms.GITHUB, Platforms.TWITTER, Platforms.INSTAGRAM, Platforms.PINTEREST, Platforms.SPOTIFY]
+            results = sync_execute_queries(queries, platforms)
+            for result in results:
+                print(f"{bcolors.BOLD}{result.platform}:{bcolors.ENDC}{bcolors.WARNING} {result.message} (Success: {result.success}, Available: {result.available}){bcolors.ENDC}")
+            print("")    
+            print("------------------------")  
+            print("")
     except:
-        print("Pastebin search error!")
-    x = mail.replace("@", "%40")
-    u = (searchurlT+x+"%22")
-    response = requests.get(u)
-    html = response.content
-    soup=BeautifulSoup(html,"html.parser")
-    rgx = str(soup)
-    urls = re.findall('http[s]?://throwbin.io(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+<', rgx)
+        print("Social Scan Error!")
     try:
-        for x in range(len(urls)): 
-            t = urls[x].replace("<", "")
-            print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+t)
-
+        if (leakeddb == "True" or leakeddb == "T" or leakeddb == "true"):
+            headers = { 
+            "Accept": "application/json" 
+            }
+            u = (leakedpassurl+mail)
+            response = requests.get(u,headers=headers)
+            html = response.content
+            lp = json.loads(html)
+            table = PrettyTable(["Domain","Email",f"{bcolors.FAIL}Password{bcolors.ENDC}"])
+            for s in range(len(lp)):
+                table.add_row([lp[s]["fields"]["domain"],lp[s]["fields"]["email"],lp[s]["fields"]["password"]])
+            print(table)    
+            print("")    
+            print("------------------------")  
+            print("")
     except:
-        print("Throwbin search error!")
-    print("")    
-    print("------------------------")  
-    print("")
-    response = requests.get(pwnedurl+str(mail))
-    html = response.content
-    soup=BeautifulSoup(html,"html.parser")
-    with open("html.txt","w") as file :
-        file.write(str(soup))
-    logfile = open("html.txt", "r") 
-    c=0
-    find="#ffffff;"+'"'+'>'+"Sourced"
-    for line in logfile:
-        if find in line.split():
-            c += 1
-    if c == 1:
-        print(f"{bcolors.HEADER}[#]{bcolors.ENDC}" + " Pwned on "+str(c)+" breached site!")
-        remo()
-        continue
-    elif c == 0:
-        print(f"{bcolors.FAIL}[#]{bcolors.ENDC}" + " No pwnage found!")
-        remo()
-        continue
-    else:
-        print(f"{bcolors.HEADER}[#]{bcolors.ENDC}" + " Pwned on "+str(c)+" breached sites!")
-        remo()
-        continue
+        print("DB Connection Error!")
+        print("")
+    try:
+        if (pastebindumps == "True" or pastebindumps == "T" or pastebindumps == "true"):
+            print(f"{bcolors.WARNING} -- Scanning Pastebin Dumps...{bcolors.ENDC}")
+            print("")
+            u = (psbdmpurl+mail)
+            response = requests.get(u,headers=headers)
+            html = response.content
+            lp = json.loads(html)
+            for i in lp['data']:
+                print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+"https://pastebin.com/"+i['id'])
+            print("")    
+            print("------------------------")  
+            print("")
+    except:
+        print("Pastebin Dump DB Connection Error!")
+    try:
+        if (googlesearch == "True" or googlesearch == "T" or googlesearch == "true"):
+            print(f"{bcolors.WARNING} -- Google Searching... [Pastebin & Throwbin]{bcolors.ENDC}")
+            print("")    
+            x = mail.replace("@", "%40")
+            u = (searchurlP+x+"%22")
+            response = requests.get(u)
+            html = response.content
+            soup=BeautifulSoup(html,"html.parser")
+            rgx = str(soup)
+            urls = re.findall('http[s]?://pastebin.com(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+<', rgx)
+    
+            for x in range(len(urls)): 
+                p = urls[x].replace("<", "")
+                print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+p)
+
+            x = mail.replace("@", "%40")
+            u = (searchurlT+x+"%22")
+            response = requests.get(u)
+            html = response.content
+            soup=BeautifulSoup(html,"html.parser")
+            rgx = str(soup)
+            urls = re.findall('http[s]?://throwbin.io(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+<', rgx)
+    
+            for x in range(len(urls)): 
+                t = urls[x].replace("<", "")
+                print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+t)
+            print("")    
+            print("------------------------")  
+            print("")
+    except:
+        print("Google Search error!")  
+    try:
+        if (dns == "True" or dns == "T" or dns == "true"):
+            at = "@"
+            domain = (mail[mail.index(at) + len(at):])
+            dnsurl = ("https://api.hackertarget.com/dnslookup/?q="+domain)
+            dnstable = PrettyTable([f"{bcolors.WARNING}DNS LOOKUP{bcolors.ENDC}"])
+            response = requests.get(dnsurl)
+            html = response.content
+            soup=BeautifulSoup(html,"html.parser")
+            dnstable.add_row([soup])
+            print(dnstable)
+    except:
+        print("Service Error! { DNS Lookup}")

@@ -41,7 +41,7 @@ pip3 install json
 Also, you can **exit** by pressing the `q` key.
 
 ## :computer: Screen:
-[![asciicast](https://asciinema.org/a/w9XiY4aJ2LuYfU7pd0Hlg4OzF.svg)](https://asciinema.org/a/w9XiY4aJ2LuYfU7pd0Hlg4OzF)
+[![asciicast](https://asciinema.org/a/hgWEMkMKKHv4skaiBJbK8bJRe.svg)](https://asciinema.org/a/hgWEMkMKKHv4skaiBJbK8bJRe)
 
 ### :money_with_wings: My Bitcoin Wallet:
 `3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`

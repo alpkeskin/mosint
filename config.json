@@ -1,0 +1,11 @@
+[
+  {
+    "Check Connections": "True",
+    "API Key": "",
+    "Social Scan": "True",
+    "Leaked DB": "True",
+    "Pastebin Dumps": "True",
+    "Google Search": "True",
+    "DNS Lookup": "True"
+  }
+]

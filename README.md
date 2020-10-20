@@ -3,7 +3,7 @@
 # MOSINT
 
 ## :question: What is the MOSINT ?
-MOSINT is a OSINT Tool for emails.
+MOSINT is an OSINT Tool for emails.
 It helps you gather information about the target email.
 #### :briefcase: Features:
   - [need API] Verification Service { Check if email exist }
@@ -14,27 +14,21 @@ It helps you gather information about the target email.
 
 ## :key: API Key:
 https://verify-email.org/ --> API Integration
-You must create an API key for the verification feature.
+You can create an API key for the verification feature.
 Also "credit" data is get from the verification service.
+#### For Use:
+Save your API key in the `api.txt`
+
 
 ## :package: Cloning:
 `git clone https://github.com/alpkeskin/mosint.git`
 
 ## :shipit: Usage:
-:bangbang: Don't forget to download the necessary modules!
-```
-pip3 install beautifulsoup4
-pip3 install socialscan
-pip3 install requests
-pip3 install prettytable
-pip3 install json
-```
+`pip3 install -r requirements.txt`
 
 `cd mosint`
 
 `python3 mosint.py`
-
-- Set your API Key
 
 - Set Target Email
 

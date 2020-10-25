@@ -1,9 +1,11 @@
 [
   {
+    "verify-email.org API Key": "",
+    "hunter.io API Key": "",
     "Check Connections": "True",
-    "API Key": "",
     "Social Scan": "True",
     "Leaked DB": "True",
+    "Related Phone Numbers" : "True",
     "Pastebin Dumps": "True",
     "Google Search": "True",
     "DNS Lookup": "True"

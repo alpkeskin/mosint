@@ -1,6 +1,7 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 # MOSINT
+developed by Alp Keskin
 
 ## :question: What is the MOSINT ?
 MOSINT is an OSINT Tool for emails.
@@ -9,11 +10,29 @@ It helps you gather information about the target email.
   - [need API] Verification Service { Check if email exist }
   - Check social accounts with Socialscan
   - Check data breach with scylla.sh
+  - [need API] Find related emails
+  - Find related phone numbers
   - Scan Pastebin Dumps
   - Google Search
   - DNS Lookup
   
   :bangbang: You can turn features on off from the `config.json` :bangbang:
+  
+  ```
+  [
+    {
+      "verify-email.org API Key": "set API KEY here",
+      "shodan.io API Key": "set API KEY here",
+      "Check Connections": "True",
+      "Social Scan": "True",
+      "Leaked DB": "True",
+      "Related Phone Numbers" : "True",
+      "Pastebin Dumps": "True",
+      "Google Search": "True",
+      "DNS Lookup": "True"
+    }
+]
+  ```
 
 ## :key: API Key:
 **[not required to run the program]**

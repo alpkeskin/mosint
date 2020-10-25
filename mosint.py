@@ -72,7 +72,7 @@ for i in conf:
     verifyApi = (i['verify-email.org API Key'])
     socialscan = (i['Social Scan'])
     leakeddb = (i['Leaked DB'])
-    hunterApi = (i['shodan.io API Key'])
+    hunterApi = (i['hunter.io API Key'])
     dbdata = (i['Related Phone Numbers'])
     pastebindumps = (i['Pastebin Dumps'])
     googlesearch = (i['Google Search'])

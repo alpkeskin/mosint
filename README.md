@@ -40,6 +40,8 @@ It helps you gather information about the target email.
 https://verify-email.org/ --> API Integration
 You can create an API key for the verification feature.
 Also "credit" data is get from the verification service.
+https://hunter.io/ --> API Integration
+You can show the emails related to the target email
 #### For Use:
 Save your API key in the `config.json`
 

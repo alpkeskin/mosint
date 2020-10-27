@@ -10,8 +10,8 @@ It helps you gather information about the target email.
   - [need API] Verification Service { Check if email exist }
   - Check social accounts with Socialscan
   - Check data breach with scylla.sh
-  - [need API] Find related emails
-  - Find related phone numbers
+  - [**NEW**][need API] Find related emails
+  - [**NEW**]Find related phone numbers
   - Scan Pastebin Dumps
   - Google Search
   - DNS Lookup

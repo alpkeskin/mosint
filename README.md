@@ -18,7 +18,7 @@ It helps you gather information about the target email.
   
   :bangbang: You can turn features on off from the `config.json` :bangbang:
   
-  ```
+  ```json
   [
     {
       "verify-email.org API Key": "set API KEY here",

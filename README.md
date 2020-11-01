@@ -107,3 +107,6 @@ MAIL >
 
 ### :money_with_wings: My Bitcoin Wallet:
 `3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`
+
+#### :white_check_mark: Tested on:
+- Kali Linux

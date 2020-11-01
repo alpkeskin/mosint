@@ -6,6 +6,7 @@
     "Social Scan": "True",
     "Leaked DB": "True",
     "Related Phone Numbers" : "True",
+    "Related Domains" : "True",
     "Pastebin Dumps": "True",
     "Google Search": "True",
     "DNS Lookup": "True"

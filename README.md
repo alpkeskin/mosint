@@ -27,6 +27,7 @@ It helps you gather information about the target email.
       "Social Scan": "True",
       "Leaked DB": "True",
       "Related Phone Numbers" : "True",
+      "Related Domains" : "True",
       "Pastebin Dumps": "True",
       "Google Search": "True",
       "DNS Lookup": "True"
@@ -64,7 +65,7 @@ Save your API key in the `config.json`
 Also, you can **exit** by pressing the `q` key.
 
 ## :computer: Screen:
-```
+```python
 ___  ________ _____ _____ _   _ _____ 
 |  \/  |  _  /  ___|_   _| \ | |_   _|
 | .  . | | | \ `--.  | | |  \| | | |  

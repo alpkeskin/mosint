@@ -159,7 +159,7 @@ while True:
     if (mail == "q"):
         print("Thank you for using "+f"{bcolors.BOLD}MOSINT{bcolors.ENDC}.")
         break
-    elif (mail.find("@") == -1 and mail.find(".")):
+    elif (mail.find("@") == -1 and mail.find(".") == -1):
         print(f"{bcolors.FAIL}Email format is wrong!{bcolors.ENDC}")
         break
     if (verifyApi != ""): 

@@ -9,7 +9,7 @@ It helps you gather information about the target email.
 #### :briefcase: Features:
   - [need API] Verification Service { Check if email exist }
   - Check social accounts with Socialscan
-  - Check data breach with scylla.sh
+  - Check data breach
   - [need API] Find related emails
   - Find related phone numbers
   - Find related domains

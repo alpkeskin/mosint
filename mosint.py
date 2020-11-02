@@ -136,16 +136,16 @@ def verifyconnect(url='https://verify-email.org/' , timeout=5):
     return False
 
 
-def pwnconnect(url='https://scylla.sh/' , timeout=20):
+def pwnconnect(url='https://psbdmp.ws/' , timeout=5):
     try:
         req = requests.get(url, timeout=timeout)
         req.raise_for_status()
-        print(f"{bcolors.OKGREEN}[+] You're connected to leaked database.{bcolors.ENDC}")
+        print(f"{bcolors.OKGREEN}[+] You're connected to leaked dumps.{bcolors.ENDC}")
         return True
     except requests.HTTPError as e:
         print("[-] Checking internet connection failed, status code {0}.".format(e.response.status_code))
     except requests.ConnectionError:
-        print(f"{bcolors.FAIL}[-] No leaked database available.{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}[-] No leaked dumps available.{bcolors.ENDC}")
     return False
 
 

@@ -1,7 +1,7 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 # MOSINT
-developed by Alp Keskin
+:up: Help me improve the tool
 
 ## :question: What is the MOSINT ?
 MOSINT is an OSINT Tool for emails.
@@ -107,3 +107,4 @@ MAIL >
 
 #### :white_check_mark: Tested on:
 - Kali Linux
+- MacOS (without SocialScan module)

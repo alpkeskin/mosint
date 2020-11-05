@@ -23,8 +23,7 @@ It helps you gather information about the target email.
   [
     {
       "verify-email.org API Key": "set API KEY here",
-      "shodan.io API Key": "set API KEY here",
-      "Check Connections": "True",
+      "hunter.io API Key": "set API KEY here",
       "Social Scan": "True",
       "Leaked DB": "True",
       "Related Phone Numbers" : "True",
@@ -78,8 +77,6 @@ v1.3
 github.com/alpkeskin
 
 Config File
-├── Check Connections
-│   └── False
 ├── Verify API
 │   ├── True
 │   └── Credits

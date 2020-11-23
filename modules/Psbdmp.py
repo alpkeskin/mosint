@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import json, requests
-from modules.bcolors import bcolors
+from insides.bcolors import bcolors
 
 def Psbdmp(mail,_verbose=None):
 	if _verbose != None:
@@ -17,8 +17,5 @@ def Psbdmp(mail,_verbose=None):
 			lp = json.loads(html)
 			for i in lp['data']:
 				print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+"https://pastebin.com/"+i['id'])
-			print("")   
-			print("------------------------")  
-			print("")
 		except:
-			print("Dump not found!")
+			print(f"{bcolors.FAIL}Dump not found!{bcolors.ENDC}")

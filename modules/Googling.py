@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import re, requests
-from modules.bcolors import bcolors
+from insides.bcolors import bcolors
 
 
 def Googling(mail,_verbose=None):
@@ -31,8 +31,5 @@ def Googling(mail,_verbose=None):
 			for x in range(len(urls)): 
 				t = urls[x].replace("<", "")
 				print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+t)
-			print("")    
-			print("------------------------")  
-			print("")
 		except:
-			print("Google Search error!")
+			print(f"{bcolors.FAIL}Google Search error!{bcolors.ENDC}")

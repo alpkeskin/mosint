@@ -1,7 +1,7 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 # MOSINT
-:up: Help me improve the tool
+
 
 ## :question: What is the MOSINT ?
 MOSINT is an OSINT Tool for emails.
@@ -9,7 +9,7 @@ It helps you gather information about the target email.
 #### :briefcase: Features:
   - [need API] Verification Service { Check if email exist }
   - Check social accounts with Socialscan
-  - Check data breach
+  - Check data breaches
   - [need API] Find related emails
   - Find related phone numbers
   - Find related domains
@@ -24,6 +24,7 @@ It helps you gather information about the target email.
     {
       "verify-email.org API Key": "set API KEY here",
       "hunter.io API Key": "set API KEY here",
+      "Breached Sites[leak-lookup.com API Key]": "set API KEY here",
       "Social Scan": "True",
       "Leaked DB": "True",
       "Related Phone Numbers" : "True",
@@ -35,15 +36,19 @@ It helps you gather information about the target email.
 ]
   ```
 
-## :key: API Key:
-**[not required to run the program]**
+## :key: APIs:
+[not required to run the program]
 
-https://verify-email.org/ --> API Integration
-You can create an API key for the verification feature.
-Also "credit" data is get from the verification service.
+| Service | Function | Status |
+|-|-|-|
+| [verify-email](https://verify-email.org/) | Email Verification | :white_check_mark: :key: |
+| [hunter.io](https://hunter.io/) - Public | Related Emails | :white_check_mark: :key: |
+| [leak-lookup](https://leak-lookup.com/) | Breached Sites Names | :white_check_mark: :key: |
+| [scylla.sh](https://scylla.sh/) | Database Leaks | :white_check_mark: |
+| [hackertarget](https://hackertarget.com/) | DNS Lookup | :white_check_mark: |
 
-https://hunter.io/ --> API Integration
-You can show the emails related to the target email
+*:key: - API key required* 
+
 #### For Use:
 Save your API key in the `config.json`
 

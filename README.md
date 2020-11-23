@@ -71,46 +71,13 @@ Save your API key in the `config.json`
 Also, you can **exit** by pressing the `q` key.
 
 ## :computer: Screen:
-```python
-___  ________ _____ _____ _   _ _____ 
-|  \/  |  _  /  ___|_   _| \ | |_   _|
-| .  . | | | \ `--.  | | |  \| | | |  
-| |\/| | | | |`--. \ | | | . ` | | |  
-| |  | \ \_/ /\__/ /_| |_| |\  | | |  
-\_|  |_/\___/\____/ \___/\_| \_/ \_/ 
 
-v1.3
-github.com/alpkeskin
-
-Config File
-├── Verify API
-│   ├── True
-│   └── Credits
-│       └── 98
-├── Social Scan
-│   └── True
-├── Leaked DB
-│   └── True
-├── Hunter API
-│   └── True
-├── Related Phone Numbers
-│   └── True
-├── Related Domains
-│   └── True
-├── Pastebin Dumps
-│   └── True
-├── Google Search
-│   └── True
-└── DNS Lookup
-    └── True
-
-MAIL > 
-
-```
+[![mosint](https://asciinema.org/a/2vXl00ACUTpPULeQsYcDiFsXy.svg)](https://asciinema.org/a/2vXl00ACUTpPULeQsYcDiFsXy)
 
 ### :money_with_wings: My Bitcoin Wallet:
 `3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`
 
 #### :white_check_mark: Tested on:
 - Kali Linux
+- Parrot OS
 - MacOS (without SocialScan module)

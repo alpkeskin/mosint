@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import json, requests
-from modules.bcolors import bcolors
+from insides.bcolors import bcolors
 
 def RelatedDomains(mail,_verbose=None):
 	if _verbose != None:
@@ -12,8 +12,5 @@ def RelatedDomains(mail,_verbose=None):
 			print(f"{bcolors.BOLD}Related Domains:{bcolors.ENDC}")
 			for x in lp['domains']:
 				print(x)
-			print("")
-			print("------------------------")  
-			print("")
 		except:
-			print("Domain not found!")
+			print(f"{bcolors.FAIL}Domain not found!{bcolors.ENDC}")

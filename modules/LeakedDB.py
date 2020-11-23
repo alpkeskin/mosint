@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import json, requests
-from modules.bcolors import bcolors
+from insides.bcolors import bcolors
 from prettytable import PrettyTable
 
 def LeakedDB(mail,_verbose=None):
@@ -18,8 +18,5 @@ def LeakedDB(mail,_verbose=None):
 			for s in range(len(lp)):
 				table.add_row([lp[s]["fields"]["domain"],lp[s]["fields"]["email"],lp[s]["fields"]["password"]])
 			print(table)
-			print("")
-			print("------------------------")  
-			print("")
 		except:
-			print("Leaked DB Connection Error!")
+			print(f"{bcolors.FAIL}Leaked DB Connection Error!{bcolors.ENDC}")

@@ -46,6 +46,7 @@ It helps you gather information about the target email.
 | [leak-lookup](https://leak-lookup.com/) | Breached Sites Names | :white_check_mark: :key: |
 | [scylla.sh](https://scylla.sh/) | Database Leaks | :white_check_mark: |
 | [hackertarget](https://hackertarget.com/) | DNS Lookup | :white_check_mark: |
+| [psbdmp](https://psbdmp.ws/) | Pastebin Dumps | :white_check_mark: |
 
 *:key: - API key required* 
 

@@ -1,12 +1,12 @@
 from anytree import Node, RenderTree
 from bs4 import BeautifulSoup
 import json, requests
-from modules.bcolors import bcolors
+from insides.bcolors import bcolors
 
-def ConfigTree(verifyApi,socialscan,leakeddb,hunterApi,dbdata,tcrwd,pastebindumps,googlesearch,dns, _verbose=None):
+def ConfigTree(verifyApi,socialscan,leakeddb,breachedsites,hunterApi,dbdata,tcrwd,pastebindumps,googlesearch,dns, _verbose=None):
 	if _verbose != None:
 		try:
-			fileshow = Node(f"{bcolors.BOLD}Config File{bcolors.ENDC}")
+			fileshow = Node(f"{bcolors.BOLD}Config File{bcolors.ENDC} [Modules]")
 			vrfctnsrvc1 = Node("Verify API", parent=fileshow)
 			if (verifyApi != ""):
 				creditsurl = "https://app.verify-email.org/api/v1/"+verifyApi+"/credits"
@@ -31,6 +31,11 @@ def ConfigTree(verifyApi,socialscan,leakeddb,hunterApi,dbdata,tcrwd,pastebindump
 				lkeddb11 = Node('\x1b[6;30;42m'+leakeddb+ '\x1b[0m', parent=lkeddb1)
 			else:
 				lkeddb11 = Node('\x1b[1;31;40m'+'False'+ '\x1b[0m', parent=lkeddb1)
+			breachedsites = Node("Breached Sites", parent=fileshow)
+			if (breachedsites != ""):
+				bs = Node('\x1b[6;30;42m'+'True'+ '\x1b[0m', parent=breachedsites)
+			else:
+				bs = Node('\x1b[1;31;40m'+'False'+ '\x1b[0m', parent=breachedsites)
 			hntr1 = Node("Hunter API", parent=fileshow)
 			if (hunterApi != ""):
 				hntr11 = Node('\x1b[6;30;42m'+'True'+ '\x1b[0m', parent=hntr1)

@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from prettytable import PrettyTable
-from modules.bcolors import bcolors
+from insides.bcolors import bcolors
 
 def DNS(mail,_verbose=None):
 	if _verbose != None:
@@ -16,4 +16,4 @@ def DNS(mail,_verbose=None):
 			dnstable.add_row([soup])
 			print(dnstable)
 		except:
-			print("Service Error! { DNS Lookup}")
+			print(f"{bcolors.FAIL}Service Error! [ DNS Lookup ]{bcolors.ENDC}")

@@ -7,7 +7,7 @@
 MOSINT is an OSINT Tool for emails.
 It helps you gather information about the target email.
 #### :briefcase: Features:
-  - [need API] Verification Service { Check if email exist }
+  - Verification Service { Check if email exist }
   - Check social accounts with Socialscan
   - Check data breaches
   - [need API] Find related emails
@@ -62,7 +62,7 @@ Save your API key in the `config.json`
 
 `pip3 install -r requirements.txt`
 
-- You can edit the `Config.json` file
+- You can edit the `config.json` file
 
 `python3 mosint.py`
 

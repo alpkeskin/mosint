@@ -1,23 +1,23 @@
 from bs4 import BeautifulSoup
-import json, requests
+import json
+import requests
 from insides.bcolors import bcolors
+from insides.commonMails import commonMails
 
-def Hunter(mail,hunterApi,_verbose=None):
+
+def Hunter(mail, hunterAPIKey, _verbose=None):
 	if _verbose != None:
 		try:
-
-			dmnlist = ["gmail.com","outlook.com","hotmail.com","yahoo.com","hotmail.co.uk","icloud.com"]
-			at = "@"
-			domain = (mail[mail.index(at) + len(at):])
-			if (domain in dmnlist):
-				print(f"{bcolors.FAIL}Unacceptable domain : {bcolors.ENDC}"+domain)
+			domain = mail.split("@")[1]
+			if (domain in commonMails):
+				print(f"{bcolors.FAIL}Unacceptable domain :{bcolors.ENDC} {domain}")
 			else:
-				print(f"{bcolors.BOLD}Related emails:{bcolors.ENDC}")
-				u = "https://api.hunter.io/v2/domain-search?domain="+domain+"&api_key="+hunterApi
-				response = requests.get(u)
-				html = response.content
-				lp = json.loads(html)
-				for i in range(0,99):
-					print(lp['data']['emails'][i]['value'])
+				res = requests.get(f"https://api.hunter.io/v2/domain-search?domain={domain}&api_key={hunterAPIKey}").json()	
+				if len(res['data']['emails']):
+					print(f"{bcolors.BOLD}Related emails:{bcolors.ENDC}")
+					for i in res['data']['emails'][:100]:
+						print(i["value"])
+				else:
+					print(f"{bcolors.FAIL}No related mails found!{bcolors.ENDC}")
 		except:
-			pass
+			print(f"{bcolors.FAIL}Hunter.io error!{bcolors.ENDC}")

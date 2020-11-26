@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import json, requests
 from insides.bcolors import bcolors
 
+# TODO: Clean boolean in string.
+
 def ConfigTree(verifyApi,socialscan,leakeddb,breachedsites,hunterApi,dbdata,tcrwd,pastebindumps,googlesearch,dns, _verbose=None):
 	if _verbose != None:
 		try:

@@ -1,11 +1,11 @@
 # https://github.com/alpkeskin
-import json
-from bs4 import BeautifulSoup
+import json, re
 from insides.bcolors import bcolors
 from insides.Header import Header
 
-configfile = open('config.json', "r")
-conf = json.loads(configfile.read())
+with open('config.json', "r") as configFile:
+    conf = json.loads(configFile.read())
+
 for i in conf:
     verifyApi = (i['verify-email.org API Key'])
     socialscan = (i['Social Scan'])
@@ -25,14 +25,20 @@ from modules.ConfigTree import ConfigTree
 ConfigTree(verifyApi,socialscan,leakeddb,breachedsites,hunterApi,dbdata,tcrwd,pastebindumps,googlesearch,dns,_verbose=True)
 
 print("")
+
+# TODO: Clean boolean in string.
+
+EMAIL_REGEX = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)'
+
 while True:
     mail=input(f"{bcolors.OKBLUE}MAIL > {bcolors.ENDC}")
+
     if (mail == "q" or mail == "Q" or mail == "exit"):
         print("Thank you for using "+f"{bcolors.BOLD}MOSINT{bcolors.ENDC}.")
         break
-    elif (mail.find("@") == -1 and mail.find(".") == -1):
+    elif not re.match(EMAIL_REGEX, mail):
         print(f"{bcolors.FAIL}Email format is wrong!{bcolors.ENDC}")
-        break
+        continue
 
     if (verifyApi != ""): 
         from modules.VerifyMail import VerifyMail
@@ -90,5 +96,7 @@ while True:
 
     if (dns == "True" or dns == "T" or dns == "true"):
         from modules.DNS import DNS
+        title = "DNS LOOKUP"
+        Header(title)
         DNS(mail,_verbose=True)
       

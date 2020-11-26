@@ -5,17 +5,12 @@ from insides.bcolors import bcolors
 def Psbdmp(mail,_verbose=None):
 	if _verbose != None:
 		try:
-			headers = { 
-			"Accept": "application/json" 
-			}
-			print(f"{bcolors.WARNING} -- Scanning Pastebin Dumps...{bcolors.ENDC}")
-			print("")
-			psbdmpurl = "https://psbdmp.ws/api/search/"
-			u = (psbdmpurl+mail)
-			response = requests.get(u,headers=headers)
-			html = response.content
-			lp = json.loads(html)
-			for i in lp['data']:
-				print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+"https://pastebin.com/"+i['id'])
+			print(f"{bcolors.WARNING} -- Scanning Pastebin Dumps...{bcolors.ENDC}\n")
+			res = requests.get(f"https://psbdmp.ws/api/search/{mail}",headers={ "Accept": "application/json" }).json().get('data') or []
+			if len(res):
+				for i in res:
+					print(f"{bcolors.OKGREEN}|-- {bcolors.ENDC}"+"https://pastebin.com/"+i['id'])
+			else:
+				print(f"{bcolors.FAIL}No psbdump records found!{bcolors.ENDC}")
 		except:
-			print(f"{bcolors.FAIL}Dump not found!{bcolors.ENDC}")
+			print(f"{bcolors.FAIL}Psbdump Error!{bcolors.ENDC}")

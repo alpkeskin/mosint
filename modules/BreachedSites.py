@@ -1,5 +1,4 @@
 import requests
-import json
 from insides.bcolors import bcolors
 
 def BreachedSites(mail,breachedsites,_verbose=None):
@@ -7,12 +6,11 @@ def BreachedSites(mail,breachedsites,_verbose=None):
 		try:
 			url = "https://leak-lookup.com/api/search"
 			payload = {"key": breachedsites, "type": "email_address", "query": mail}
-			req = requests.post(url, data=payload, timeout=30)
-			email_response = req.json()
-			data = str(email_response['message'])
-			data_parse = data.split(',')
-			for leaks in data_parse:
-				ll = str(leaks)
-				print(f"[{bcolors.WARNING}!{bcolors.ENDC}] "+ll[2:-5])
+			res = requests.post(url, data=payload, timeout=30).json()
+			if res['error'] == 'false' and isinstance(res['message'], dict):
+				for i in res['message'].keys():
+					print(f"[{bcolors.WARNING}!{bcolors.ENDC}] {i}")
+			else:
+				print(f"{bcolors.FAIL}Leak-lookup.com API error:{bcolors.ENDC} {res['message']}")
 		except:
 			print(f"{bcolors.FAIL}Leak-lookup.com error!{bcolors.ENDC}")

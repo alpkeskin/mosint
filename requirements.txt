@@ -3,3 +3,4 @@ prettytable==0.7.2
 anytree==2.8.0
 beautifulsoup4==4.9.3
 socialscan==1.4.1
+googlesearch-python

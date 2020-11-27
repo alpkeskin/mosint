@@ -10,7 +10,7 @@ def RelatedNumbers(mail, _verbose=None):
 			rgx = str(soup)
 			phones = re.findall('<td colspan="2">\+.*.</td>', rgx)
 			for phone in phones:
-				number = urls[x].replace("<td colspan="+'"'+'2'+'"'+'>', "").replace("</td>","")
+				number = phones[phone].replace("<td colspan="+'"'+'2'+'"'+'>', "").replace("</td>","")
 				print(number)
 			if len(phones) == 0:
 				print(f"{bcolors.FAIL}No phone numbers found!{bcolors.ENDC}")

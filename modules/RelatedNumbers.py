@@ -9,7 +9,7 @@ def RelatedNumbers(mail, _verbose=None):
 			soup=BeautifulSoup(html,"html.parser")
 			rgx = str(soup)
 			phones = re.findall('<td colspan="2">\+.*.</td>', rgx)
-			for phone in phones:
+			for phone in range(len(phones)):
 				number = phones[phone].replace("<td colspan="+'"'+'2'+'"'+'>', "").replace("</td>","")
 				print(number)
 			if len(phones) == 0:

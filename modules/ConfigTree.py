@@ -33,11 +33,11 @@ def ConfigTree(verifyApi,socialscan,leakeddb,breachedsites,hunterApi,dbdata,tcrw
 				lkeddb11 = Node('\x1b[6;30;42m'+leakeddb+ '\x1b[0m', parent=lkeddb1)
 			else:
 				lkeddb11 = Node('\x1b[1;31;40m'+'False'+ '\x1b[0m', parent=lkeddb1)
-			breachedsites = Node("Breached Sites", parent=fileshow)
+			breachedS = Node("Breached Sites", parent=fileshow)
 			if (breachedsites != ""):
-				bs = Node('\x1b[6;30;42m'+'True'+ '\x1b[0m', parent=breachedsites)
+				bs = Node('\x1b[6;30;42m'+'True'+ '\x1b[0m', parent=breachedS)
 			else:
-				bs = Node('\x1b[1;31;40m'+'False'+ '\x1b[0m', parent=breachedsites)
+				bs = Node('\x1b[1;31;40m'+'False'+ '\x1b[0m', parent=breachedS)
 			hntr1 = Node("Hunter API", parent=fileshow)
 			if (hunterApi != ""):
 				hntr11 = Node('\x1b[6;30;42m'+'True'+ '\x1b[0m', parent=hntr1)

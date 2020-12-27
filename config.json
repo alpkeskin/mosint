@@ -5,6 +5,7 @@
     "Breached Sites[leak-lookup.com API Key]": "",
     "Social Scan": "True",
     "Leaked DB": "True",
+    "PDF Check for Related Emails":"True",
     "Related Phone Numbers" : "True",
     "Related Domains" : "True",
     "Pastebin Dumps": "True",

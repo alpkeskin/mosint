@@ -5,7 +5,7 @@ from insides.bcolors import bcolors
 
 # TODO: Clean boolean in string.
 
-def ConfigTree(verifyApi,socialscan,leakeddb,breachedsites,hunterApi,dbdata,tcrwd,pastebindumps,googlesearch,dns, _verbose=None):
+def ConfigTree(verifyApi,socialscan,leakeddb,breachedsites,hunterApi,checkPDF,dbdata,tcrwd,pastebindumps,googlesearch,dns, _verbose=None):
 	if _verbose != None:
 		try:
 			fileshow = Node(f"{bcolors.BOLD}Config File{bcolors.ENDC} [Modules]")
@@ -43,6 +43,11 @@ def ConfigTree(verifyApi,socialscan,leakeddb,breachedsites,hunterApi,dbdata,tcrw
 				hntr11 = Node('\x1b[6;30;42m'+'True'+ '\x1b[0m', parent=hntr1)
 			else:
 				hntr11 = Node('\x1b[1;31;40m'+'False'+ '\x1b[0m', parent=hntr1)
+			pdf = Node("PDF Check", parent=fileshow)
+			if (checkPDF == "True" or checkPDF == "true"):
+				pdf1 = Node('\x1b[6;30;42m'+'True'+ '\x1b[0m', parent=pdf)
+			else:
+				pdf1 = Node('\x1b[1;31;40m'+'False'+ '\x1b[0m', parent=pdf)
 			dbdt1 = Node("Related Phone Numbers", parent=fileshow)
 			if (dbdata == "True" or dbdata == "true"):
 				dbdt11 = Node('\x1b[6;30;42m'+dbdata+ '\x1b[0m', parent=dbdt1)

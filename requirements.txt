@@ -5,3 +5,4 @@ beautifulsoup4==4.9.3
 socialscan==1.4.1
 googlesearch-python
 verify-email
+tabula==1.0.5

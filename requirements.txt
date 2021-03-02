@@ -1,8 +1,10 @@
-requests==2.24.0
-prettytable==0.7.2
-anytree==2.8.0
-beautifulsoup4==4.9.3
+tabula_py==2.2.0
+google==3.0.0
 socialscan==1.4.1
-googlesearch-python
-verify-email
+requests==2.22.0
+anytree==2.8.0
+prettytable==0.7.2
+beautifulsoup4==4.9.3
+PyPDF2==1.26.0
 tabula==1.0.5
+verify_email==2.4.3

@@ -9,7 +9,7 @@ MOSINT is an OSINT Tool for emails. It helps you gather information about the ta
 * Verification Service { Check if email exist }
 * Check social accounts with Socialscan
 * Check data breaches
-* \[need API\] Find related emails
+* Find related emails [API & PDFs]
 * Find related phone numbers
 * Find related domains
 * Scan Pastebin Dumps
@@ -46,7 +46,7 @@ You can turn features on off from the `config.json`
 | [verify-email](https://verify-email.org/) | Email Verification | :white\_check\_mark: :key: |
 | [hunter.io](https://hunter.io/) - Public | Related Emails | :white\_check\_mark: :key: |
 | [leak-lookup](https://leak-lookup.com/) | Breached Sites Names | :white\_check\_mark: :key: |
-| [scylla.sh](https://scylla.sh/) | Database Leaks | :white\_check\_mark: |
+| [scylla.sh](https://scylla.sh/) | Database Leaks | :construction: |
 | [hackertarget](https://hackertarget.com/) | DNS Lookup | :white\_check\_mark: |
 | [psbdmp](https://psbdmp.ws/) | Pastebin Dumps | :white\_check\_mark: |
 
@@ -68,13 +68,12 @@ Save your API key in the `config.json`
 
 * You can edit the `config.json` file
 
-`python3 mosint.py`
+* Set Target Email [ -e / --email ]
 
-* Set Target Email
+`python3 mosint.py -e example@website.com`
 
-Also, you can **exit** by pressing the `q` key.
 
-## Screen:
+## Screen :
 
 [![mosint](https://asciinema.org/a/2vXl00ACUTpPULeQsYcDiFsXy.svg)](https://asciinema.org/a/2vXl00ACUTpPULeQsYcDiFsXy)
 
@@ -86,5 +85,5 @@ Also, you can **exit** by pressing the `q` key.
 
 * Kali Linux
 * Parrot OS
-* MacOS \(without SocialScan module\)
+* MacOS 
 

@@ -1,89 +1,102 @@
 # MOSINT
 
-## What is the MOSINT ?
+<p align="center">
+  <img src="https://raw.githubusercontent.com/alpkeskin/mosint/master/banner.png" width="500" title="mosint">
+</p>
+
+## What is the MOSINT :question:
 
 MOSINT is an OSINT Tool for emails. It helps you gather information about the target email.
 
-#### Features:
+#### Features: :eyes:
 
-* Verification Service { Check if email exist }
+* Email validation
 * Check social accounts with Socialscan
 * Check data breaches
-* Find related emails [API & PDFs]
-* Find related phone numbers
+* Find related emails
 * Find related domains
 * Scan Pastebin Dumps
 * Google Search
 * DNS Lookup
+* IP Lookup
+* Find subdomains of domain 
 
 
-
-You can turn features on off from the `config.json` 
-
-```javascript
-[
-{
-  "verify-email.org API Key": "set API KEY here",
-  "hunter.io API Key": "set API KEY here",
-  "Breached Sites[leak-lookup.com API Key]": "set API KEY here",
-  "Social Scan": "True",
-  "Leaked DB": "True",
-  "Related Phone Numbers" : "True",
-  "Related Domains" : "True",
-  "Pastebin Dumps": "True",
-  "Google Search": "True",
-  "DNS Lookup": "True"
-}
-]
-```
-
-## APIs:
+## Services (APIs): :key:
 
 \[not required to run the program\]
 
 | Service | Function | Status |
 | :--- | :--- | :--- |
-| [verify-email](https://verify-email.org/) | Email Verification | :white\_check\_mark: :key: |
+| [ipapi.co](https://ipapi.co/) - Public | More Information About Domain | :white\_check\_mark: |
 | [hunter.io](https://hunter.io/) - Public | Related Emails | :white\_check\_mark: :key: |
-| [leak-lookup](https://leak-lookup.com/) | Breached Sites Names | :white\_check\_mark: :key: |
-| [scylla.sh](https://scylla.sh/) | Database Leaks | :construction: |
-| [hackertarget](https://hackertarget.com/) | DNS Lookup | :white\_check\_mark: |
-| [psbdmp](https://psbdmp.ws/) | Pastebin Dumps | :white\_check\_mark: |
+| [emailrep.io](https://emailrep.io/) - Public | Breached Sites Names | :white\_check\_mark: :key: |
+| [scylla.so](https://scylla.so/) - Public | Database Leaks | :construction: |
+| [breachdirectory.org](https://breachdirectory.org/) - Public | Database Leaks | :white\_check\_mark: :key: |
 
 _- API key required_
 
 #### For Use:
 
-Save your API key in the `config.json`
+- Save your API key in the `keys.json`
+- Install Go and Python on your system
 
-## Cloning:
+## Installation:
 
 `git clone https://github.com/alpkeskin/mosint.git`
-
-## Usage:
 
 `cd mosint`
 
 `pip3 install -r requirements.txt`
 
-* You can edit the `config.json` file
+## Usage:
 
-* Set Target Email [ -e / --email ]
+you can type `-h` for help menu.
 
-`python3 mosint.py -e example@website.com`
+```text
++-------+--------------------------------+------------+
+| FLAGS |          DESCRIPTION           | ISREQUIRED |
++-------+--------------------------------+------------+
+| -e    | Set target email               | Yes        |
+| -v    | Verify the target email        | No         |
+| -ss   | Social scan for target email   | No         |
+| -re   | Find related emails with       | No         |
+|       | target email                   |            |
+| -rd   | Find related domains with      | No         |
+|       | target email                   |            |
+| -l    | Find password leaks for target | No         |
+|       | email                          |            |
+| -pd   | Search pastebin dumps for      | No         |
+|       | target email                   |            |
+| -er   | EmailRep.io API                | No         |
+| -d    | More information about target  | No         |
+|       | email's domain                 |            |
+| -all  | All features!                  | No         |
++-------+--------------------------------+------------+
+```
+
+### Example:
+
+`go run main.go -e example@domain.com -all`
 
 
 ## Screen :
 
-[![mosint](https://asciinema.org/a/2vXl00ACUTpPULeQsYcDiFsXy.svg)](https://asciinema.org/a/2vXl00ACUTpPULeQsYcDiFsXy)
+[![mosint](https://asciinema.org/a/444753.svg)](https://asciinema.org/a/444753)
 
-### My Bitcoin Wallet:
-
-`3NFfd1QXUVFsZzfbwGJiAJdehtPB9D88tK`
+### My Bitcoin Wallet: :money_with_wings:
+[BTC]
+`19N6A1yAGcfLpaFGQtWaVf316ETWweRbUo`
 
 #### Tested on:
 
-* Kali Linux
-* Parrot OS
-* MacOS 
+- [x] Linux
+- [x] macOS
+
+#### To-Do list: :memo:
+
+- PDF Scanner for Related Emails
+- Output file (.txt)
+- Related phone number sources
+- Useful API's
 

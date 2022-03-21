@@ -40,6 +40,7 @@ func help_menu() {
 		{"-leaks", "Find password leaks for target email", "No"},
 		{"-dumps", "Search pastebin dumps for target email", "No"},
 		{"-domain", "More information about target email's domain", "No"},
+		{"-o", "Output to text file", "No"},
 		{"-v", "Version of mosint", "No"},
 		{"-h", "Help Menu", "No"},
 		{"-all", "All features!", "No"},

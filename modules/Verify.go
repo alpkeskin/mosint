@@ -1,23 +1,43 @@
+// mosint v2.1
+// Author: Alp Keskin
+// Github: github.com/alpkeskin
+// Website: https://imalp.co
 package modules
 
 import (
+	"strings"
+
 	emailverifier "github.com/AfterShip/email-verifier"
-	"github.com/fatih/color"
 )
+
+type VerifyStruct struct {
+	IsVerified   bool  `json:"is_verified"`
+	IsDisposable bool  `json:"is_disposable"`
+	Err          error `json:"err"`
+}
 
 var (
-	verifier = emailverifier.NewVerifier()
+	verifier = emailverifier.NewVerifier().
+		EnableAutoUpdateDisposable()
 )
 
-func Verify_email(email string) {
+func VerifyEmail(email string) VerifyStruct {
+	v := VerifyStruct{}
 	ret, err := verifier.Verify(email)
 	if err != nil {
-		color.Red("[-] Verify email address failed, error is: ", err)
-
+		v.Err = err
 	}
 	if !ret.Syntax.Valid {
-		color.Red("[-] Email address syntax is invalid!")
+		v.IsVerified = false
+	} else {
+		domain := strings.Split(email, "@")[1]
+		v.IsVerified = true
+		if !verifier.IsDisposable(domain) {
+			v.IsDisposable = false
+		} else {
+			v.IsDisposable = true
+		}
 	}
-	color.Green("[+] Email verified!")
+	return v
 
 }

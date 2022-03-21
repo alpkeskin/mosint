@@ -1,3 +1,4 @@
-requests==2.26.0
+holehe==1.60.3
+httpx==0.22.0
 socialscan==1.4.1
-emailrep==0.0.5
+trio==0.20.0

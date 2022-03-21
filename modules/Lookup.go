@@ -1,18 +1,49 @@
+// mosint v2.1
+// Author: Alp Keskin
+// Github: github.com/alpkeskin
+// Website: https://imalp.co
 package modules
 
 import (
 	"encoding/json"
-	"fmt"
 	"net"
 	"os"
 	"strings"
 
-	"github.com/fatih/color"
 	"github.com/olekukonko/tablewriter"
 	"github.com/valyala/fasthttp"
 )
 
-func DNS_lookup(email string) {
+type IPAPIStruct struct {
+	IP                 string  `json:"ip"`
+	Version            string  `json:"version"`
+	City               string  `json:"city"`
+	Region             string  `json:"region"`
+	RegionCode         string  `json:"region_code"`
+	Country            string  `json:"country"`
+	CountryName        string  `json:"country_name"`
+	CountryCode        string  `json:"country_code"`
+	CountryCodeIso3    string  `json:"country_code_iso3"`
+	CountryCapital     string  `json:"country_capital"`
+	CountryTld         string  `json:"country_tld"`
+	ContinentCode      string  `json:"continent_code"`
+	InEu               bool    `json:"in_eu"`
+	Postal             string  `json:"postal"`
+	Latitude           float64 `json:"latitude"`
+	Longitude          float64 `json:"longitude"`
+	Timezone           string  `json:"timezone"`
+	UtcOffset          string  `json:"utc_offset"`
+	CountryCallingCode string  `json:"country_calling_code"`
+	Currency           string  `json:"currency"`
+	CurrencyName       string  `json:"currency_name"`
+	Languages          string  `json:"languages"`
+	CountryArea        float64 `json:"country_area"`
+	CountryPopulation  int     `json:"country_population"`
+	Asn                string  `json:"asn"`
+	Org                string  `json:"org"`
+}
+
+func DNS_lookup(email string) *tablewriter.Table {
 	splt := strings.Split(email, "@")
 
 	data := [][]string{}
@@ -43,10 +74,12 @@ func DNS_lookup(email string) {
 	for _, v := range data {
 		table.Append(v)
 	}
-	table.Render() // Send output
+	//table.Render()
+	return table
 }
 
-func IPapi(email string) {
+func IPAPI(email string) IPAPIStruct {
+	data := IPAPIStruct{}
 	splt := strings.Split(email, "@")
 	ips, _ := net.LookupIP(splt[1])
 	ip4api := ""
@@ -66,19 +99,8 @@ func IPapi(email string) {
 		fasthttp.Do(req, resp)
 
 		bodyBytes := resp.Body()
-		var dat map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dat); err != nil {
-			panic(err)
-		}
-		color.Magenta("IPapi.co data:")
-		println(fmt.Sprintf("IP: %v", dat["ip"]))
-		println(fmt.Sprintf("|-- City: %v", dat["city"]))
-		println(fmt.Sprintf("|-- Region: %v", dat["region"]))
-		println(fmt.Sprintf("|-- Region: %v", dat["region"]))
-		println(fmt.Sprintf("|-- Country Name: %v", dat["country_name"]))
-		println(fmt.Sprintf("|-- Country calling code: %v", dat["country_calling_code"]))
-		println(fmt.Sprintf("|-- Timezone: %v", dat["timezone"]))
-		println(fmt.Sprintf("|-- asn: %v", dat["asn"]))
-		println(fmt.Sprintf("|-- org: %v", dat["org"]))
+
+		json.Unmarshal(bodyBytes, &data)
 	}
+	return data
 }

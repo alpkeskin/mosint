@@ -1,7 +1,6 @@
-[
-  {
-    "BreachDirectory.org API Key": "",
-    "hunter.io API Key": "",
-    "EmailRep.io API Key": ""
-  }
-]
+{
+  "BreachDirectory.org API Key": "",
+  "Hunter.io API Key": "",
+  "EmailRep.io API Key": "",
+  "Intelx.io API Key": ""
+}

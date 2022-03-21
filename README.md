@@ -4,25 +4,23 @@
   <img src="https://raw.githubusercontent.com/alpkeskin/mosint/master/banner.png" width="500" title="mosint">
 </p>
 
-## What is the MOSINT :question:
+## What is the MOSINT
 
 MOSINT is an OSINT Tool for emails. It helps you gather information about the target email.
 
 #### Features: :eyes:
 
 * Email validation
-* Check social accounts with Socialscan
-* Check data breaches
-* Find related emails
-* Find related domains
-* Scan Pastebin Dumps
+* Check social accounts with Socialscan and Holehe
+* Check data breaches and password leaks
+* Find related emails and domains
+* Scan Pastebin and Throwbin Dumps
 * Google Search
 * DNS Lookup
 * IP Lookup
-* Find subdomains of domain 
 
 
-## Services (APIs): :key:
+## Services (APIs):
 
 \[not required to run the program\]
 
@@ -32,9 +30,10 @@ MOSINT is an OSINT Tool for emails. It helps you gather information about the ta
 | [hunter.io](https://hunter.io/) - Public | Related Emails | :white\_check\_mark: :key: |
 | [emailrep.io](https://emailrep.io/) - Public | Breached Sites Names | :white\_check\_mark: :key: |
 | [scylla.so](https://scylla.so/) - Public | Database Leaks | :construction: |
-| [breachdirectory.org](https://breachdirectory.org/) - Public | Database Leaks | :white\_check\_mark: :key: |
+| [breachdirectory.org](https://breachdirectory.org/) - Public | Password Leaks | :white\_check\_mark: :key: |
+| [Intelligence X](https://intelx.io/) - Public | Password Leaks | :white\_check\_mark: :key: |
 
-_- API key required_
+:key: API key required
 
 #### For Use:
 
@@ -53,50 +52,36 @@ _- API key required_
 
 you can type `-h` for help menu.
 
-```text
-+-------+--------------------------------+------------+
-| FLAGS |          DESCRIPTION           | ISREQUIRED |
-+-------+--------------------------------+------------+
-| -e    | Set target email               | Yes        |
-| -v    | Verify the target email        | No         |
-| -ss   | Social scan for target email   | No         |
-| -re   | Find related emails with       | No         |
-|       | target email                   |            |
-| -rd   | Find related domains with      | No         |
-|       | target email                   |            |
-| -l    | Find password leaks for target | No         |
-|       | email                          |            |
-| -pd   | Search pastebin dumps for      | No         |
-|       | target email                   |            |
-| -er   | EmailRep.io API                | No         |
-| -d    | More information about target  | No         |
-|       | email's domain                 |            |
-| -all  | All features!                  | No         |
-+-------+--------------------------------+------------+
-```
+| FLAGS     | DESCRIPTION                                       | ISREQUIRED |
+|-----------|---------------------------------------------------|------------|
+| -e        | Set target email                                  | Yes        |
+| -verify   | Verify target email                               | No         |
+| -social   | Social scan for target email                      | No         |
+| -relateds | Find related emails and domains with target email | No         |
+| -leaks    | Find password leaks for target email              | No         |
+| -dumps    | Search pastebin dumps for target email            | No         |
+| -domain   | More information about target email's domain      | No         |
+| -o        | Output to text file                               | No         |
+| -v        | Version of mosint                                 | No         |
+| -h        | Help Menu                                         | No         |
+| -all      | All features!                                     | No         |
 
 ### Example:
 
 `go run main.go -e example@domain.com -all`
 
+Just type `-o` for output file (.txt)
+
 
 ## Screen :
 
-[![mosint](https://asciinema.org/a/444753.svg)](https://asciinema.org/a/444753)
+[![mosint](https://asciinema.org/a/479072.svg)](https://asciinema.org/a/479072)
 
-### My Bitcoin Wallet: :money_with_wings:
-[BTC]
-`19N6A1yAGcfLpaFGQtWaVf316ETWweRbUo`
+### Buy me a cofffee: :money_with_wings:
+
+https://www.buymeacoffee.com/alpkeskin
 
 #### Tested on:
 
 - [x] Linux
 - [x] macOS
-
-#### To-Do list: :memo:
-
-- PDF Scanner for Related Emails
-- Output file (.txt)
-- Related phone number sources
-- Useful API's
-

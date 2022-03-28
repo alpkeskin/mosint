@@ -18,6 +18,7 @@ MOSINT is an OSINT Tool for emails. It helps you gather information about the ta
 * Google Search
 * DNS Lookup
 * IP Lookup
+* Output to text file
 
 
 ## Services (APIs):
@@ -31,7 +32,7 @@ MOSINT is an OSINT Tool for emails. It helps you gather information about the ta
 | [emailrep.io](https://emailrep.io/) - Public | Breached Sites Names | :white\_check\_mark: :key: |
 | [scylla.so](https://scylla.so/) - Public | Database Leaks | :construction: |
 | [breachdirectory.org](https://breachdirectory.org/) - Public | Password Leaks | :white\_check\_mark: :key: |
-| [Intelligence X](https://intelx.io/) - Public | Password Leaks | :white\_check\_mark: :key: |
+| [Intelligence X](https://intelx.io/)| Password Leaks | :white\_check\_mark: :key: |
 
 :key: API key required
 
@@ -77,7 +78,7 @@ Just type `-o` for output file (.txt)
 
 [![mosint](https://asciinema.org/a/479072.svg)](https://asciinema.org/a/479072)
 
-### Buy me a cofffee: :money_with_wings:
+### Buy me a coffee: :money_with_wings:
 
 https://www.buymeacoffee.com/alpkeskin
 

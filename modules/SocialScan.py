@@ -1,10 +1,9 @@
-#mosint v2.1
-#Author: Alp Keskin
-#Github: github.com/alpkeskin
-#Website: https://imalp.co
+# mosint v2.1
+# Author: Alp Keskin
+# Github: github.com/alpkeskin
+# Website: https://imalp.co
 from socialscan.util import Platforms, sync_execute_queries
 import argparse
-
 
 
 def parse_args():
@@ -34,5 +33,6 @@ def main():
         f.close()
     except Exception as e:
         print(e)
+
 
 main()

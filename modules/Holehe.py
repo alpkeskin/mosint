@@ -1,7 +1,7 @@
-#mosint v2.1
-#Author: Alp Keskin
-#Github: github.com/alpkeskin
-#Website: https://imalp.co
+# mosint v2.1
+# Author: Alp Keskin
+# Github: github.com/alpkeskin
+# Website: https://imalp.co
 from genericpath import exists
 import trio
 import httpx
@@ -37,5 +37,6 @@ async def main():
         file.close()
     except Exception as e:
         print(e)
+
 
 trio.run(main)

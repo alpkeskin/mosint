@@ -31,7 +31,10 @@ func BreachDirectory(email string) BreachDirectoryStruct {
 	req.Header.Add("x-rapidapi-host", "breachdirectory.p.rapidapi.com")
 	req.Header.Add("x-rapidapi-key", key)
 
-	res, _ := http.DefaultClient.Do(req)
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		panic(err)
+	}
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)

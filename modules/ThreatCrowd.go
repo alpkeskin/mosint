@@ -22,6 +22,9 @@ func doRequest(url string, kind string) []string {
 
 	fasthttp.Do(req, resp)
 	var data_array []string
+	if resp.StatusCode() != 200 {
+		return data_array
+	}
 	bodyBytes := resp.Body()
 	var dat map[string]interface{}
 	if err := json.Unmarshal(bodyBytes, &dat); err != nil {

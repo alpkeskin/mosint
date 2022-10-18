@@ -1,13 +1,15 @@
-// mosint v2.1
+// mosint v2.2
 // Author: Alp Keskin
 // Github: github.com/alpkeskin
-// Website: https://imalp.co
-package modules
+// Linkedin: linkedin.com/in/alpkeskin
+
+package cmd
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"sync"
 )
 
 type BreachDirectoryStruct struct {
@@ -22,11 +24,18 @@ type BreachDirectoryStruct struct {
 	} `json:"result"`
 }
 
-func BreachDirectory(email string) BreachDirectoryStruct {
-	key := GetAPIKey("BreachDirectory.org API Key")
+func BreachDirectory(wg *sync.WaitGroup, email string) {
+	defer wg.Done()
+	var key string = GetAPIKey("Breachdirectory")
+	if key == "" {
+		return
+	}
 	url := "https://breachdirectory.p.rapidapi.com/?func=auto&term=" + email
 
-	req, _ := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		panic(err)
+	}
 
 	req.Header.Add("x-rapidapi-host", "breachdirectory.p.rapidapi.com")
 	req.Header.Add("x-rapidapi-key", key)
@@ -38,7 +47,5 @@ func BreachDirectory(email string) BreachDirectoryStruct {
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
-	data := BreachDirectoryStruct{}
-	json.Unmarshal(body, &data)
-	return data
+	json.Unmarshal(body, &breachdirectory_result)
 }

@@ -1,11 +1,13 @@
-// mosint v2.1
+// mosint v2.2
 // Author: Alp Keskin
 // Github: github.com/alpkeskin
-// Website: https://imalp.co
-package modules
+// Linkedin: linkedin.com/in/alpkeskin
+
+package cmd
 
 import (
 	"strings"
+	"sync"
 
 	emailverifier "github.com/AfterShip/email-verifier"
 )
@@ -21,23 +23,22 @@ var (
 		EnableAutoUpdateDisposable()
 )
 
-func VerifyEmail(email string) VerifyStruct {
-	v := VerifyStruct{}
+func VerifyEmail(wg *sync.WaitGroup, email string) {
+	defer wg.Done()
 	ret, err := verifier.Verify(email)
 	if err != nil {
-		v.Err = err
+		verify_result.Err = err
 	}
 	if !ret.Syntax.Valid {
-		v.IsVerified = false
+		verify_result.IsVerified = false
 	} else {
 		domain := strings.Split(email, "@")[1]
-		v.IsVerified = true
+		verify_result.IsVerified = true
 		if !verifier.IsDisposable(domain) {
-			v.IsDisposable = false
+			verify_result.IsDisposable = false
 		} else {
-			v.IsDisposable = true
+			verify_result.IsDisposable = true
 		}
 	}
-	return v
 
 }

@@ -1,12 +1,14 @@
-// mosint v2.1
+// mosint v2.2
 // Author: Alp Keskin
 // Github: github.com/alpkeskin
-// Website: https://imalp.co
-package modules
+// Linkedin: linkedin.com/in/alpkeskin
+
+package cmd
 
 import (
 	"context"
 	"fmt"
+	"sync"
 
 	"github.com/IntelligenceX/SDK/Go/ixapi"
 )
@@ -14,14 +16,13 @@ import (
 const defaultMaxResults = 10 // max results to query and show
 const frontendBaseURL = "https://intelx.io/"
 
-var urls []string
-
-func Intelx(email string) []string {
-	key := GetAPIKey("Intelx.io API Key")
-
+func Intelx(wg *sync.WaitGroup, email string) {
+	defer wg.Done()
+	key := GetAPIKey("Intelx")
+	if key == "" {
+		return
+	}
 	search(context.Background(), key, email, 2)
-
-	return urls
 }
 
 func search(ctx context.Context, Key, Selector string, Sort int) {
@@ -50,7 +51,7 @@ func generateResultText(ctx context.Context, api *ixapi.IntelligenceXAPI, Record
 		if title == "" {
 			title = "Untitled Document"
 		}
-		urls = append(urls, resultLink)
+		intelx_result = append(intelx_result, resultLink)
 
 		if n >= defaultMaxResults-1 {
 			break

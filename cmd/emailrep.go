@@ -1,13 +1,15 @@
-// mosint v2.1
+// mosint v2.2
 // Author: Alp Keskin
 // Github: github.com/alpkeskin
-// Website: https://imalp.co
-package modules
+// Linkedin: linkedin.com/in/alpkeskin
+
+package cmd
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"sync"
 )
 
 type EmailRepStruct struct {
@@ -43,16 +45,17 @@ type EmailRepStruct struct {
 	} `json:"details"`
 }
 
-func EmailRep(email string) EmailRepStruct {
-	key := GetAPIKey("EmailRep.io API Key")
-
+func EmailRep(wg *sync.WaitGroup, email string) {
+	defer wg.Done()
+	var key string = GetAPIKey("Emailrep")
+	if key == "" {
+		return
+	}
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", "https://emailrep.io/"+email, nil)
 	req.Header.Set("Key", key)
 	req.Header.Set("User-Agent", "mosint")
 	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
-	data := EmailRepStruct{}
-	json.Unmarshal(body, &data)
-	return data
+	json.Unmarshal(body, &emailrep_result)
 }

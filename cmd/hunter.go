@@ -1,14 +1,16 @@
-// mosint v2.1
+// mosint v2.2
 // Author: Alp Keskin
 // Github: github.com/alpkeskin
-// Website: https://imalp.co
-package modules
+// Linkedin: linkedin.com/in/alpkeskin
+
+package cmd
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"sync"
 )
 
 type HunterStruct struct {
@@ -61,15 +63,16 @@ type HunterStruct struct {
 	} `json:"meta"`
 }
 
-func Hunter(email string) HunterStruct {
-	key := GetAPIKey("Hunter.io API Key")
-
+func Hunter(wg *sync.WaitGroup, email string) {
+	defer wg.Done()
+	key := GetAPIKey("Hunter")
+	if key == "" {
+		return
+	}
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", "https://api.hunter.io/v2/domain-search?domain="+strings.Split(email, "@")[1]+"&api_key="+key, nil)
 	req.Header.Set("User-Agent", "mosint")
 	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
-	data := HunterStruct{}
-	json.Unmarshal(body, &data)
-	return data
+	json.Unmarshal(body, &hunter_result)
 }

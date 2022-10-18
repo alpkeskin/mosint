@@ -1,4 +1,0 @@
-holehe==1.60.3
-httpx==0.22.0
-socialscan==1.4.1
-trio==0.20.0

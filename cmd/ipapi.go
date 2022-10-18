@@ -1,16 +1,16 @@
-// mosint v2.1
+// mosint v2.2
 // Author: Alp Keskin
 // Github: github.com/alpkeskin
-// Website: https://imalp.co
-package modules
+// Linkedin: linkedin.com/in/alpkeskin
+
+package cmd
 
 import (
 	"encoding/json"
 	"net"
-	"os"
 	"strings"
+	"sync"
 
-	"github.com/olekukonko/tablewriter"
 	"github.com/valyala/fasthttp"
 )
 
@@ -43,43 +43,8 @@ type IPAPIStruct struct {
 	Org                string  `json:"org"`
 }
 
-func DNS_lookup(email string) *tablewriter.Table {
-	splt := strings.Split(email, "@")
-
-	data := [][]string{}
-	iprecords, _ := net.LookupIP(splt[1])
-	for _, ip := range iprecords {
-		row := []string{"IP", ip.String()}
-		data = append(data, row)
-	}
-	nameserver, _ := net.LookupNS(splt[1])
-	for _, ns := range nameserver {
-		row := []string{"NS", ns.Host}
-		data = append(data, row)
-	}
-	mxrecords, _ := net.LookupMX(splt[1])
-	for _, mx := range mxrecords {
-		row := []string{"MX", mx.Host}
-		data = append(data, row)
-	}
-	txtrecords, _ := net.LookupTXT(splt[1])
-	for _, txt := range txtrecords {
-		row := []string{"TXT", txt}
-		data = append(data, row)
-	}
-
-	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{"Name", "Record"})
-
-	for _, v := range data {
-		table.Append(v)
-	}
-	//table.Render()
-	return table
-}
-
-func IPAPI(email string) IPAPIStruct {
-	data := IPAPIStruct{}
+func IPAPI(wg *sync.WaitGroup, email string) {
+	defer wg.Done()
 	splt := strings.Split(email, "@")
 	ips, _ := net.LookupIP(splt[1])
 	ip4api := ""
@@ -100,7 +65,6 @@ func IPAPI(email string) IPAPIStruct {
 
 		bodyBytes := resp.Body()
 
-		json.Unmarshal(bodyBytes, &data)
+		json.Unmarshal(bodyBytes, &ipapi_result)
 	}
-	return data
 }

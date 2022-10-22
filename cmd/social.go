@@ -148,31 +148,22 @@ func Discord(wg *sync.WaitGroup, email string) {
 }
 
 func getCSRFToken() string {
-	var url string = "https://instagram.com"
+	var url string = "https://www.instagram.com/accounts/emailsignup/"
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36")
 	res, err := client.Do(req)
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer res.Body.Close()
 	if res.StatusCode == 200 {
-		r, err := regexp.Compile("csrftoken.+?;")
-		if err != nil {
-			log.Fatal(err)
+		re := regexp.MustCompile(`(?m){\\"config\\":{\\"csrf_token\\":\\"(.*?)\\"`)
+		match := re.FindStringSubmatch(string(body))
+		if len(match) > 0 {
+			return match[1]
 		}
-		var pattern string
-		for _, v := range res.Header {
-			for _, v2 := range v {
-				if r.FindString(v2) != "" {
-					pattern = r.FindString(v2)
-					break
-				}
-			}
-		}
-		var index int = strings.Index(pattern, "=")
-		var token string = pattern[index+1 : len(pattern)-1]
-		return token
 	}
 	return ""
 }

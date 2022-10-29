@@ -8,10 +8,12 @@
 
 MOSINT is a fastest OSINT Tool for emails. It helps you gather information about the target email.
 
+[Documentation - Tutorial / Practicle ](./Doc/main.md)
+
 #### Features: :eyes:
 
 * Email validation
-* Check social accounts
+* Check social accounts [Exmaple](./Doc/social.md)
 * Check data breaches and password leaks
 * Find related emails and domains
 * Scan Pastebin Dumps

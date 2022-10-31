@@ -46,7 +46,23 @@ MOSINT is a fastest OSINT Tool for emails. It helps you gather information about
 
 ## Installation:
 
+### Using Go
+
 `go install -v github.com/alpkeskin/mosint@latest`
+
+### Using Docker
+
+Build a docker image 
+
+```
+docker build . -t mosint
+```
+
+Run the docker container using the image
+
+```
+docker run mosint --help
+```
 
 ## Usage:
 

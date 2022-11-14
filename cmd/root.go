@@ -89,7 +89,7 @@ func init() {
 	{{ .AnsiColor.BrightWhite }}v2.2{{ .AnsiColor.Default }}
 	{{ .AnsiColor.BrightCyan }}https://github.com/alpkeskin/{{ .AnsiColor.Default }}
 	Now: {{ .Now "Monday, 2 Jan 2006" }}`
-	if os.Args[1] != "set" {
+	if os.Args[0] != "set" {
 		banner.InitString(colorable.NewColorableStdout(), true, true, templ)
 	}
 	println()

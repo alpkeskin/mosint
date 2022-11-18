@@ -46,11 +46,15 @@ MOSINT is a fastest OSINT Tool for emails. It helps you gather information about
 
 ## Installation:
 
-`go install -v github.com/alpkeskin/mosint@latest`
+```
+go install -v github.com/alpkeskin/mosint@latest
+```
 
 ## Usage:
 
-`mosint example@email.com`
+```
+mosint example@email.com
+```
 
 ## Screen :
 

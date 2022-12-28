@@ -212,20 +212,24 @@ func PrintBreachDirectory(breachdirectory_result BreachDirectoryStruct) {
 			for _, v2 := range v.Sources {
 				fmt.Println("|-- "+v2, color.GreenString("\u2714"))
 			}
-			fmt.Println("|- "+v.Password, color.GreenString("\u2714"))
-			fmt.Println("|- "+v.Sha1, color.GreenString("\u2714"))
-			fmt.Println("|- "+v.Hash, color.GreenString("\u2714"))
-		}
-	} else {
-		color.Red("|- No results found")
-	}
+			if v.HasPassword {
+				fmt.Println("|- Password: "+v.Password, color.GreenString("\u2714"))
+				fmt.Println("|- SHA-1: "+v.Sha1, color.GreenString("\u2714"))
+				fmt.Println("|- Hash: "+v.Hash, color.GreenString("\u2714"))
+			} else {
+				fmt.Println("|- No Password Available", color.GreenString("\u2714"))
+            }
+        }
+    } else {
+        color.Red("|- No results found")
+    }
 }
 
 func PrintLookup(lookup_temp_result [][]string) {
-	fmt.Println("\nLookup Results:")
-	lookup_result := tablewriter.NewWriter(os.Stdout)
-	for _, v := range lookup_temp_result {
-		lookup_result.Append(v)
-	}
-	lookup_result.Render()
+    fmt.Println("\nLookup Results:")
+    lookup_result := tablewriter.NewWriter(os.Stdout)
+    for _, v := range lookup_temp_result {
+        lookup_result.Append(v)
+    }
+    lookup_result.Render()
 }

@@ -31,6 +31,7 @@ MOSINT is a fastest OSINT Tool for emails. It helps you gather information about
 | [scylla.so](https://scylla.so/) - Public | Database Leaks | :construction: |
 | [psbdmp.ws](https://psbdmp.ws/) - Public | Pastebin Dumps | :white\_check\_mark: :key: |
 | [Intelligence X](https://intelx.io/)| Password Leaks | :white\_check\_mark: :key: |
+| [BreachDirectory](https://breachdirectory.org/)| Password Leaks | :white\_check\_mark: :key: |
 
 :key: API key required
 

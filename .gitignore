@@ -229,3 +229,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/python,vscode,macos,windows,linux,venv
+dist/

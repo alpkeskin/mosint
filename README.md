@@ -1,7 +1,7 @@
 # MOSINT
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/alpkeskin/mosint/master/banner2-2.png" width="500" title="mosint">
+  <img src="https://raw.githubusercontent.com/alpkeskin/mosint/master/banner2-3.png" width="500" title="mosint">
 </p>
 
 ## What is the MOSINT
@@ -16,21 +16,20 @@ MOSINT is a fastest OSINT Tool for emails. It helps you gather information about
 * Find related emails and domains
 * Scan Pastebin Dumps
 * Google Search
-* DNS Lookup
+* DNS/IP Lookup
 
 
 ## Services (APIs):
 
-\[not required to run the program\]
-
 | Service | Function | Status |
 | :--- | :--- | :--- |
-| [ipapi.co](https://ipapi.co/) - Public | More Information About Domain | :construction: |
+| [ipapi.co](https://ipapi.co/) - Public | More Information About Domain | :white\_check\_mark: |
 | [hunter.io](https://hunter.io/) - Public | Related Emails | :white\_check\_mark: :key: |
 | [emailrep.io](https://emailrep.io/) - Public | Breached Sites Names | :white\_check\_mark: :key: |
 | [scylla.so](https://scylla.so/) - Public | Database Leaks | :construction: |
 | [psbdmp.ws](https://psbdmp.ws/) - Public | Pastebin Dumps | :white\_check\_mark: :key: |
 | [Intelligence X](https://intelx.io/)| Password Leaks | :white\_check\_mark: :key: |
+| [BreachDirectory](https://breachdirectory.org/)| Password Leaks | :white\_check\_mark: :key: |
 
 :key: API key required
 
@@ -45,12 +44,14 @@ MOSINT is a fastest OSINT Tool for emails. It helps you gather information about
   ```
 
 ## Installation:
-
-`go install -v github.com/alpkeskin/mosint@latest`
+```
+go install -v github.com/alpkeskin/mosint@latest
+```
 
 ## Usage:
-
-`mosint example@email.com`
+```
+mosint example@email.com
+```
 
 ## Screen :
 

@@ -1,0 +1,33 @@
+builds:
+  - binary: mosint
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -mod=vendor
+
+release:
+  prerelease: auto
+
+universal_binary:
+  - replace: true
+
+brews:
+  -
+    name: mosint
+    description: An automated e-mail OSINT tool
+    homepage: https://github.com/alpkeskin/mosint
+    tap:
+      owner: alpkeskin
+      name: homebrew-mosint
+    commit_author:
+      name: alpkeskin
+      email: 0n1co@protonmail.com
+
+checksum:
+  name_template: 'checksums.txt'

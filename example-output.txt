@@ -3,43 +3,43 @@
    | '_ ` _ \   / _ \  / __| | | | '_ \  | __|
    | | | | | | | (_) | \__ \ | | | | | | | |_
    |_| |_| |_|  \___/  |___/ |_| |_| |_|  \__|
-  
-	v2.2
-	https://github.com/alpkeskin/
-	Now: Tuesday, 18 Oct 2022
-/
+
+v2.3
+https://github.com/alpkeskin/
+Now: Sunday, 22 Jan 2023
+  57% |██████████████████████████████████████████████████                                       | (58/100, 65 it/s) [0s:0s]
+ 100% |████████████████████████████████████████████████████████████████████████████████████████| (100/100, 19 it/s)
 
 Target Email: deneme@gmail.com
 |--> Verified ✔
 |--> Not Disposable ✔
 
-EmailRep Results:
-|- Reputation: high
+|- Reputation: low
 |- Blacklisted: false
 |- Malicious Activity: false
-|- Credential Leaked: true
-|- First Seen: 07/01/2008
-|- Last Seen: 10/12/2021
-|- Day Since Domain Creation: 9927
+|- Credential Leaked: false
+|- First Seen: never
+|- Last Seen: never
+|- Day Since Domain Creation: 10023
 |- Spam: false
 |- Free Provider: true
-|- Deliverable: false
+|- Deliverable: true
 |- Valid MX: true
 
 Hunter Results:
 |- Disposable: false
 |- Webmail: true
-|- AcceptAll: true
-|- Pattern: 
+|- AcceptAll: false
+|- Pattern:
 Related Emails:
 |- No related emails found
 
 Social Media Results:
 |- Spotify 👀
-|- Twitter 👀
 |- Discord 👀
+|- Twitter 👀
 |- Adobe 👀
-|- Instagram [Not here!]
+|- Instagram 👀
 
 Pastebin Dumps (psbdmp):
 |- No results found
@@ -54,22 +54,22 @@ IntelX Results:
 |- https://intelx.io/?did=1a8fc797-9b28-4a93-99cc-3e22dbf32044 ✔
 |- https://intelx.io/?did=87f2ead2-0e6d-4e08-868d-1a1adcb93d17 ✔
 |- https://intelx.io/?did=e7938d77-049e-4ccc-a9ad-73dc22c1b641 ✔
-|- https://intelx.io/?did=1f27f3a8-e718-4cea-a640-b2e4ae5f69e8 ✔
+|- https://intelx.io/?did=319fc6f9-46ad-4cd0-94fb-88a70a70396a ✔
 
-BreachDirectory Results:
 |- Sources: ✔
 |-- CoinMarketCap.com ✔
-|-  ✔
-|-  ✔
-|-  ✔
+|- No Password Available ✔
 |- Sources: ✔
 |-- Canva.com ✔
 |-- Zynga.com ✔
 |-- Wattpad.com ✔
 |-- Ledger.com ✔
-|-  ✔
-|-  ✔
-|-  ✔
+|- No Password Available ✔
+|- Sources: ✔
+|-- Unknown ✔
+|- {s7I******************* ✔
+|- 06a83a78ae428dfe0467dea933a4650758571a3b ✔
+|- NfF1ObTB7XWUWWAk7I9quOKHd6U1BGizmLwTOdHKmdkFcPD4fF1e ✔
 |- Sources: ✔
 |-- Stealer Logs ✔
 |- olç****** ✔
@@ -171,6 +171,7 @@ BreachDirectory Results:
 |- 4521c660b382cd4853b0f9266154326bfd6c9d28 ✔
 |- op9d5gd1LkQlkNmdXbYP2KjGc94zfHig78NtWZo= ✔
 |- Sources: ✔
+|-- GameSprite.me ✔
 |-- SwordFantasy ✔
 |- dene******* ✔
 |- 52afc9b1bf29b030fc370378e0a05ed688644214 ✔
@@ -2860,14 +2861,24 @@ BreachDirectory Results:
 |- 011c945f30ce2cbafc452f39840f025693339c42 ✔
 |- 2UVkzK7qPuVTJ11lIhpRw6jFcd0= ✔
 
+IPAPI Results:
+|- IP: 172.217.20.69
+|- City: Budapest
+|- Region: Budapest
+|- Country: Hungary
+|- Country Code: HU
+|- Timezone: Europe/Budapest
+|- Organization: GOOGLE
+|- ASN: AS15169
+
 Lookup Results:
 +-----+------------------------------------------------------------------+
 | IP  | 172.217.20.69                                                    |
-| IP  | 2a00:1450:4017:812::2005                                         |
-| NS  | ns3.google.com.                                                  |
+| IP  | 2a00:1450:4017:813::2005                                         |
 | NS  | ns1.google.com.                                                  |
-| NS  | ns4.google.com.                                                  |
+| NS  | ns3.google.com.                                                  |
 | NS  | ns2.google.com.                                                  |
+| NS  | ns4.google.com.                                                  |
 | MX  | gmail-smtp-in.l.google.com.                                      |
 | MX  | alt1.gmail-smtp-in.l.google.com.                                 |
 | MX  | alt2.gmail-smtp-in.l.google.com.                                 |

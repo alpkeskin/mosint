@@ -1,0 +1,12 @@
+# Config file for github.com/alpkeskin/mosint
+# For default usage just rename this file to .mosint.yaml and put it in your home directory
+
+services:
+  breach_directory_api_key: SET_YOUR_API_KEY_HERE
+  emailrep_api_key: SET_YOUR_API_KEY_HERE
+  hunter_api_key: SET_YOUR_API_KEY_HERE
+  intelx_api_key: SET_YOUR_API_KEY_HERE
+  haveibeenpwned_api_key: SET_YOUR_API_KEY_HERE
+
+settings:
+  intelx_max_results: 20

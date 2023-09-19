@@ -1,25 +1,50 @@
-# MOSINT
+<h1 align="center">
+  <img src="static/mosint-logo.png" alt="mosint" width="150px">
+  <br>
+</h1>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/alpkeskin/mosint/master/banner2-3.png" width="500" title="mosint">
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-_red.svg"></a>
+<a href="https://goreportcard.com/badge/github.com/alpkeskin/mosint"><img src="https://goreportcard.com/badge/github.com/alpkeskin/mosint"></a>
+<a href="https://github.com/alpkeskin/mosint/releases"><img src="https://img.shields.io/github/release/alpkeskin/mosint"></a>
 </p>
 
-## What is the MOSINT
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+    <a href="#services">Services</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#configuration-file">Config</a>
+</p>
 
-MOSINT is a fastest OSINT Tool for emails. It helps you gather information about the target email.
+Mosint is an automated email osint tool written in Go that allows you investigate for target emails in a fast and efficient manner. It consolidates numerous services, enabling security researchers to swiftly access a wealth of information.
 
-#### Features: :eyes:
+# Features
 
-* Email validation
-* Check social accounts
-* Check data breaches and password leaks
-* Find related emails and domains
-* Scan Pastebin Dumps
-* Google Search
-* DNS/IP Lookup
+<h1 align="center">
+  <img src="static/mosint-run.png" alt="mosint" width="500px">
+  <br>
+</h1>
 
+ - Fast and simple email-based scanning
+ - Optimized for ease of use and **lightweight** on resources
+ - Email verification and validation
+ - Checking **Social Media** Accounts 
+ - Checking **data breaches** and **password leaks**
+ - Finding **related** emails and domains
+ - Scanning **pastebin dumps**
+ - Google Search
+ - DNS/IP Lookup
+ - Output to **JSON** file
+ - Print coffee with `--coffee` flag!
 
-## Services (APIs):
+# Installation
+
+```sh
+go install -v github.com/alpkeskin/mosint/v3/cmd/mosint@latest
+```
+
+# Services
 
 | Service | Function | Status |
 | :--- | :--- | :--- |
@@ -30,31 +55,24 @@ MOSINT is a fastest OSINT Tool for emails. It helps you gather information about
 | [psbdmp.ws](https://psbdmp.ws/) - Public | Pastebin Dumps | :white\_check\_mark: :key: |
 | [Intelligence X](https://intelx.io/)| Password Leaks | :white\_check\_mark: :key: |
 | [BreachDirectory](https://breachdirectory.org/)| Password Leaks | :white\_check\_mark: :key: |
+| [HaveIBeenPwned](https://haveibeenpwned.com/)| Password Leaks | :white\_check\_mark: :key: |
 
 :key: API key required
 
-#### If you want to use mosint with full features, set your API keys:
+# Configuration file
 
- ```
-  mosint set hunter <hunter.io API key>
-  mosint set emailrep <emailrep.io API key>
-  mosint set intelx <intelx.io API key>
-  mosint set psbdmp <psbdmp.ws API key>
-  mosint set breachdirectory <breachdirectory.org API key>
-  ```
+Mosint supports config file as default located at `$HOME/.mosint.yaml`. It allows you to define API keys for services.
 
-## Installation:
-```
-go install -v github.com/alpkeskin/mosint@latest
-```
+**You must set the config file for mosint to run! To specify a configuration file located in a directory other than the home directory, you can use the `--config` flag.**
 
-## Usage:
+# Usage:
 ```
 mosint example@email.com
 ```
 
+Call the help (`-h`) flag for more information on usage.
+
 ## Screen :
 
-[![mosint](https://asciinema.org/a/529726.svg)](https://asciinema.org/a/529726)
-
+[![mosint](https://asciinema.org/a/609038.svg)](https://asciinema.org/a/609038)
 

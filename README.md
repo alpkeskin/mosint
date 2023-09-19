@@ -15,7 +15,8 @@
   <a href="#services">Services</a> •
   <a href="#usage">Usage</a> •
   <a href="#docker">Docker</a> •
-  <a href="#configuration-file">Config</a>
+  <a href="#configuration-file">Config</a> •
+  <a href="#screen">Screen</a>
 </p>
 
 Mosint is an automated email osint tool written in Go that allows you investigate for target emails in a fast and efficient manner. It consolidates numerous services, enabling security researchers to swiftly access a wealth of information.

@@ -12,8 +12,9 @@
 <p align="center">
   <a href="#features">Features</a> •
   <a href="#installation">Installation</a> •
-    <a href="#services">Services</a> •
+  <a href="#services">Services</a> •
   <a href="#usage">Usage</a> •
+  <a href="#docker">Docker</a> •
   <a href="#configuration-file">Config</a>
 </p>
 
@@ -65,14 +66,24 @@ Mosint supports config file as default located at `$HOME/.mosint.yaml`. It allow
 
 **You must set the config file for mosint to run! To specify a configuration file located in a directory other than the home directory, you can use the `--config` flag.**
 
-# Usage:
-```
+# Usage
+```sh
 mosint example@email.com
 ```
-
 Call the help (`-h`) flag for more information on usage.
 
-## Screen :
+# Docker
+
+Build a docker image
+```sh
+docker build -t mosint .  
+```
+Run the docker container using the image
+```sh
+docker run mosint --help
+```
+
+# Screen
 
 [![mosint](https://asciinema.org/a/609038.svg)](https://asciinema.org/a/609038)
 

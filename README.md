@@ -46,6 +46,20 @@ Mosint is an automated email osint tool written in Go that allows you investigat
 go install -v github.com/alpkeskin/mosint/v3/cmd/mosint@latest
 ```
 
+# Uninstallation
+To uninstall mosint binary from your system, run the following command:
+```sh
+mosint --uninstall -b 
+```
+
+To uninstall mosint entirely from your system, run the following command:
+```sh
+mosint --uninstall -a 
+```
+or 
+```sh
+mosint --uninstall 
+```
 # Services
 
 | Service | Function | Status |

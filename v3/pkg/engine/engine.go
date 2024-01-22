@@ -5,6 +5,7 @@ package engine
 
 import (
 	"fmt"
+	"github.com/alpkeskin/mosint/v3/internal/uninstaller"
 	"os"
 	"strings"
 
@@ -28,10 +29,12 @@ var rootCmd = &cobra.Command{
 }
 
 var (
-	cfgFile    string
-	outputPath string
-	silent     bool
-	coffee     bool
+	cfgFile      string
+	outputPath   string
+	silent       bool
+	coffee       bool
+	uninstall    bool
+	uninstallArg *uninstaller.UninstallType
 )
 
 func Start() {
@@ -55,6 +58,15 @@ func magic(cmd *cobra.Command, args []string) {
 		`
 		fmt.Println(c)
 		os.Exit(0)
+	}
+
+	if uninstall {
+		u := uninstaller.Server(uninstaller.GetGoPath())
+		err := u.Uninstall(uninstallArg)
+		if err != nil {
+			fmt.Println(err)
+		}
+		return
 	}
 
 	if len(args) < 1 {
@@ -115,6 +127,8 @@ func init() {
 	{{ .AnsiColor.BrightCyan }}https://github.com/alpkeskin/{{ .AnsiColor.Default }}
 	Now: {{ .Now "Monday, 2 Jan 2006" }}`
 
+	all, binary := false, false
+
 	banner.InitString(colorable.NewColorableStdout(), true, true, template)
 	println()
 
@@ -122,4 +136,17 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file (default is $HOME/.mosint.yaml)")
 	rootCmd.PersistentFlags().StringVarP(&outputPath, "output", "o", "", "output file (.json)")
 	rootCmd.PersistentFlags().BoolVarP(&silent, "silent", "s", false, "silent mode (only output file)")
+	rootCmd.PersistentFlags().BoolVar(&uninstall, "uninstall", false,
+		"uninstall mosint \n"+
+			"--all or -a  \t uninstall entire mosint \n"+
+			"--package or -p \t uninstall all packages of mosint \n"+
+			"--binary or -b \t uninstall all packages of mosint")
+	rootCmd.PersistentFlags().BoolVarP(&all, "all", "a", false, "all")
+	rootCmd.PersistentFlags().BoolVarP(&binary, "binary", "b", false, "binary")
+	_ = rootCmd.PersistentFlags().MarkHidden("all")
+	_ = rootCmd.PersistentFlags().MarkHidden("binary")
+	uninstallArg = &uninstaller.UninstallType{
+		All:    all,
+		Binary: binary,
+	}
 }

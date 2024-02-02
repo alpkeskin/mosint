@@ -71,6 +71,10 @@ Mosint supports config file as default located at `$HOME/.mosint.yaml`. It allow
 ```sh
 mosint example@email.com
 ```
+Or for a list of emails:
+```sh
+mosint emails.txt -o results.json
+```
 Call the help (`-h`) flag for more information on usage.
 
 # Docker

@@ -4,6 +4,8 @@ Copyright © 2023 github.com/alpkeskin
 package runner
 
 import (
+	"sync"
+
 	"github.com/alpkeskin/mosint/v3/pkg/dns"
 	"github.com/alpkeskin/mosint/v3/pkg/scrape/googlesearch"
 	"github.com/alpkeskin/mosint/v3/pkg/services/breachdirectory"
@@ -18,6 +20,8 @@ import (
 	"github.com/alpkeskin/mosint/v3/pkg/social/twitter"
 	"github.com/gammazero/workerpool"
 )
+
+
 
 type Runner struct {
 	Email            string
@@ -112,4 +116,42 @@ func (c *Runner) Print() {
 
 	println()
 	c.DnsC.Print()
+}
+
+type MultiRunner struct {
+	Emails []string
+	Results map[string]*Runner
+	ConcurrencyLimit int
+}
+
+func NewMultiRunner(emails []string, concurrencyLimit ...int) *MultiRunner {
+    var limit int
+    if len(concurrencyLimit) > 0 && concurrencyLimit[0] > 0 {
+        limit = concurrencyLimit[0]
+    } else {
+        limit = 10
+    }
+    results := make(map[string]*Runner)
+    for _, email := range emails {
+        results[email] = New(email)
+    }
+    return &MultiRunner{
+        Emails:          emails,
+        Results:         results,
+        ConcurrencyLimit: limit,
+    }
+}
+
+func (mr *MultiRunner) Start() {
+    wp := workerpool.New(mr.ConcurrencyLimit)
+    var wg sync.WaitGroup
+    for _, runner := range mr.Results {
+        wg.Add(1)
+        wp.Submit(func() {
+            defer wg.Done()
+            runner.Start()
+        })
+    }
+    wg.Wait()
+    wp.StopWait()
 }

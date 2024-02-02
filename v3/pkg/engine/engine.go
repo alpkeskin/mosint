@@ -4,9 +4,9 @@ Copyright © 2023 github.com/alpkeskin
 package engine
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/alpkeskin/mosint/v3/internal/config"
 	. "github.com/alpkeskin/mosint/v3/internal/config"
@@ -20,7 +20,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "mosint [email]",
+	Use:     "mosint [email|emails.txt]",
 	Short:   "\nAn automated e-mail OSINT tool ",
 	Long:    "\nAn automated e-mail OSINT tool written in Go with a focus on simplicity and performance.",
 	Run:     magic,
@@ -32,6 +32,7 @@ var (
 	outputPath string
 	silent     bool
 	coffee     bool
+	concurrencyLimit int
 )
 
 func Start() {
@@ -42,61 +43,105 @@ func Start() {
 }
 
 func magic(cmd *cobra.Command, args []string) {
-	if coffee {
-		c := `
-		( (
-			) )
-		  ........
-		  |      |]
-		  \      / 
-		   '----'
+    if coffee {
+        printCoffee()
+        os.Exit(0)
+    }
 
-		enjoy your coffee ☕️
-		`
-		fmt.Println(c)
-		os.Exit(0)
-	}
+    Cfg = config.New()
+    if !Cfg.Exists(cfgFile) {
+        msg := fmt.Sprintf(configHelp(), color.YellowString(".mosint.yaml"))
+        println(msg)
+        os.Exit(1)
+    }
 
-	if len(args) < 1 {
+    err := Cfg.Parse(cfgFile)
+    if err != nil {
+        panic(err)
+    }
+	if len(args) == 0 {
 		cmd.Help()
 		return
 	}
+    if fileExists(args[0]) {
+        processEmailsFromFile(args[0])
+    } else {
+        processSingleEmail(args[0])
+    }
+}
 
-	Cfg = config.New()
-	if !Cfg.Exists(cfgFile) {
-		msg := fmt.Sprintf(configHelp(), color.YellowString(".mosint.yaml"))
-		println(msg)
-		os.Exit(1)
-	}
+func processSingleEmail(email string) {
+    fmt.Println("Target Email:", color.YellowString(email), color.GreenString("✓"))
 
-	err := Cfg.Parse(cfgFile)
+    if !verification.New().Syntax(email) {
+        color.Red("Email syntax is not valid! Process stopped.")
+        os.Exit(1)
+    }
 
-	if err != nil {
-		panic(err)
-	}
+    processAndOutput(email)
+}
 
-	email := args[0]
-	fmt.Println("Target Email:", color.YellowString(email), color.GreenString("✓"))
-	println()
+func processEmailsFromFile(filePath string) {
+    emails := []string{}
+    file, err := os.Open(filePath)
+    if err != nil {
+        fmt.Println("Error opening input file:", err)
+        os.Exit(1)
+    }
+    defer file.Close()
 
-	verification := verification.New()
-	if !verification.Syntax(email) {
-		color.Red("Email syntax is not valid! Process stopped.")
-		os.Exit(1)
-	}
+    scanner := bufio.NewScanner(file)
+    for scanner.Scan() {
+        email := scanner.Text()
+        if email != "" {
+            emails = append(emails, email)
+        }
+    }
 
-	runner := runner.New(email)
-	runner.Start()
+    if err := scanner.Err(); err != nil {
+        fmt.Println("Error reading input file:", err)
+        os.Exit(1)
+    }
+    if len(emails) > 0 {
+        concurrencyLimit := 10
+        multiRunner := runner.NewMultiRunner(emails, concurrencyLimit)
+        multiRunner.Start()
+        if outputPath != "" {
+            output := output.New()
+            output.SetFilePath(outputPath)
+            output.JSONMulti(multiRunner)
+        }
+    }
+}
 
-	if !silent {
-		runner.Print()
-	}
 
-	if !strings.EqualFold(outputPath, "") {
-		output := output.New()
-		output.SetFilePath(outputPath)
-		output.JSON(runner)
-	}
+func processAndOutput(email string) {
+    runner := runner.New(email)
+    runner.Start()
+
+    if !silent {
+        runner.Print()
+    }
+
+    if outputPath != "" {
+        output := output.New()
+        output.SetFilePath(outputPath)
+        output.JSON(runner)
+    }
+}
+
+func printCoffee() {
+    c := `
+    ( (
+        ) )
+      ........
+      |      |]
+      \      / 
+       '----'
+
+    enjoy your coffee ☕️
+    `
+    fmt.Println(c)
 }
 
 func configHelp() string {
@@ -109,6 +154,14 @@ func configHelp() string {
 	`
 }
 
+func fileExists(filePath string) bool {
+    info, err := os.Stat(filePath)
+    if os.IsNotExist(err) {
+        return false
+    }
+    return !info.IsDir()
+}
+
 func init() {
 	template := `{{ .Title "mosint" "" 2 }}
 	{{ .AnsiColor.BrightWhite }}v3.0{{ .AnsiColor.Default }}
@@ -117,7 +170,7 @@ func init() {
 
 	banner.InitString(colorable.NewColorableStdout(), true, true, template)
 	println()
-
+	rootCmd.PersistentFlags().IntVarP(&concurrencyLimit, "concurrency", "C", 10, "concurrency limit for processing emails from file")
 	rootCmd.PersistentFlags().BoolVar(&coffee, "coffee", false, "☕️")
 	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "config file (default is $HOME/.mosint.yaml)")
 	rootCmd.PersistentFlags().StringVarP(&outputPath, "output", "o", "", "output file (.json)")

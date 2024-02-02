@@ -43,6 +43,8 @@ type jsonOutput struct {
 	DnsRecords      []dns.Record                            `json:"dns_records"`
 }
 
+type multiJsonOutput map[string]jsonOutput
+
 func (o *Output) SetFilePath(filePath string) {
 	o.FilePath = filePath
 }
@@ -85,4 +87,47 @@ func (o *Output) JSON(runner *runner.Runner) {
 	}
 
 	spinner.Stop()
+}
+
+func (o *Output) JSONMulti(mr *runner.MultiRunner) {
+    spinner := spinner.New("JSON Output")
+    spinner.Start()
+
+    outputData := make(multiJsonOutput)
+
+    for email, runner := range mr.Results {
+        data := jsonOutput{
+            Email:           runner.Email,
+			Verified:        true,
+			EmailRep:        runner.EmailRepC.Response,
+			BreachDirectory: runner.BreachDirectoryC.Response,
+			HaveIBeenPwned:  runner.HaveibeenpwnedC.Response,
+			Hunter:          runner.HunterC.Response,
+			IpApi:           runner.IpApiC.Response,
+			IntelX:          runner.IntelxC.Response,
+			PsbDmp:          runner.PsbdmpC.Urls,
+			InstagramExists: runner.InstagramC.Exists,
+			SpotifyExists:   runner.SpotifyC.Exists,
+			TwitterExists:   runner.TwitterC.Exists,
+			GoogleSearch:    runner.GoogleSearchC.Response,
+			DnsRecords:      runner.DnsC.Records,
+        }
+        outputData[email] = data
+    }
+
+    file, err := json.MarshalIndent(outputData, "", " ")
+    if err != nil {
+        spinner.StopFail()
+        spinner.SetMessage("Error marshaling JSON: " + err.Error())
+        return
+    }
+
+    err = os.WriteFile(o.FilePath, file, 0644)
+    if err != nil {
+        spinner.StopFail()
+        spinner.SetMessage("Error writing file: " + err.Error())
+        return
+    }
+
+    spinner.Stop()
 }
